@@ -63,13 +63,13 @@ export default function Header() {
 
       {/* Overlay de Menú Móvil */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[104px] sm:top-[88px] z-40 bg-surface-bright/95 dark:bg-inverse-surface/95 backdrop-blur-xl md:hidden overflow-y-auto border-t border-outline-variant/30">
+        <div className="fixed inset-0 top-16 sm:top-20 z-40 bg-white/95 backdrop-blur-xl md:hidden overflow-y-auto border-t border-outline-variant/30">
           <nav className="flex flex-col p-6 gap-6">
-            <a className="text-primary dark:text-inverse-primary font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#servicios" onClick={() => setIsMobileMenuOpen(false)}>Servicios SEV</a>
-            <a className="text-on-surface-variant dark:text-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#metodologia" onClick={() => setIsMobileMenuOpen(false)}>Metodología</a>
-            <a className="text-on-surface-variant dark:text-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#tecnologia" onClick={() => setIsMobileMenuOpen(false)}>Equipamiento</a>
-            <a className="text-on-surface-variant dark:text-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#casos" onClick={() => setIsMobileMenuOpen(false)}>Casos de Éxito</a>
-            <a className="inline-flex items-center gap-2 px-4 py-3 mt-4 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 transition-colors justify-center" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
+            <a className="text-primary font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#servicios" onClick={() => setIsMobileMenuOpen(false)}>Servicios SEV</a>
+            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#metodologia" onClick={() => setIsMobileMenuOpen(false)}>Metodología</a>
+            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#tecnologia" onClick={() => setIsMobileMenuOpen(false)}>Equipamiento</a>
+            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#casos" onClick={() => setIsMobileMenuOpen(false)}>Casos de Éxito</a>
+            <a className="inline-flex items-center gap-2 px-4 py-3 mt-4 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 transition-colors justify-center shadow-sm" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
               <span className="material-symbols-outlined text-[18px] text-emerald-600" data-icon="chat">chat</span>
               <span>WhatsApp Directo</span>
             </a>
