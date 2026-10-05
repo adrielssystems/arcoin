@@ -30,13 +30,14 @@ export default function Hero() {
             {/*  Fast-Track Lead Gen Action Box  */}
             <div className="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 shadow-sm mb-8 crosshair-corner">
               <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-title-sm text-title-sm shadow-sm hover:shadow-md hover:-translate-y-1 active:scale-95 transition-all text-center" href="https://wa.me/584166967096?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
+                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-title-sm text-title-sm shadow-lg hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-1.5 hover:scale-105 active:scale-90 transition-all duration-300 ease-out text-center" href="https://wa.me/584166967096?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
                   <span className="material-symbols-outlined" data-icon="phone_in_talk">phone_in_talk</span>
                   <span>Consultar por WhatsApp con Ingeniero Geofísico</span>
                 </a>
-                <a className="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-sm hover:shadow-md hover:-translate-y-1 active:scale-95 transition-all text-center group" href="#cotizar">
-                  <span>Solicitar Cotización Inmediata</span>
-                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+                <a className="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-lg hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1.5 hover:scale-105 active:scale-90 transition-all duration-300 ease-out text-center group relative overflow-hidden" href="#cotizar">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]"></div>
+                  <span className="relative z-10">Solicitar Cotización Inmediata</span>
+                  <span className="relative z-10 material-symbols-outlined text-[18px] group-hover:translate-x-1.5 transition-transform duration-300" data-icon="arrow_forward">arrow_forward</span>
                 </a>
               </div>
               <div className="mt-3 flex items-center justify-between text-label-sm font-label-sm text-secondary pt-2 border-t border-outline-variant/20">

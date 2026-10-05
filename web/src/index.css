@@ -114,3 +114,9 @@
   border-bottom: 2px solid;
   border-right: 2px solid;
 }
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
