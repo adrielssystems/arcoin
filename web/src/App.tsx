@@ -818,7 +818,25 @@ export default function App() {
 <span className="font-orbitron font-bold text-title-md text-primary">Simulador de Cotización SEV</span>
 <span className="font-label-sm text-[10px] text-secondary font-code-spec">RESPUESTA &lt; 2 HORAS</span>
 </div>
-<form className="space-y-4" onSubmit={(e) => { e.preventDefault(); const form = e.target; const tipo = form['req-tipo'].value; const estado = form['req-estado'].value; const nombre = form['req-nombre'].value; window.open('https://wa.me/584166967096?text=' + encodeURIComponent('Hola ARCOIN, deseo cotizar un estudio SEV para ' + tipo + ' en el estado ' + estado + '. Mi nombre es ' + nombre)); }}>
+<form className="space-y-4" onSubmit={(e) => { 
+  e.preventDefault(); 
+  const form = e.target as HTMLFormElement; 
+  const elements = form.elements as any;
+  const nombre = elements['req-nombre'].value; 
+  const empresa = elements['req-empresa'].value;
+  const municipio = elements['req-estado'].value; 
+  const tipo = elements['req-tipo'].value;
+  const mensaje = elements['req-mensaje'].value;
+  
+  let texto = `*Hola ARCOIN, deseo solicitar una cotización SEV:*%0A%0A`;
+  texto += `👤 *Nombre:* ${nombre}%0A`;
+  if (empresa) texto += `🏢 *Empresa/Proyecto:* ${empresa}%0A`;
+  texto += `📍 *Ubicación:* Municipio ${municipio}, Nva. Esparta%0A`;
+  texto += `🎯 *Tipo de Estudio:* ${tipo}%0A`;
+  if (mensaje) texto += `📝 *Detalles:* ${mensaje}%0A`;
+  
+  window.open('https://wa.me/584166967096?text=' + texto, '_blank'); 
+}}>
 <div>
 <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-nombre">Nombre Completo y Cargo:</label>
 <input className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-nombre" placeholder="Ej: Ing. Carlos Mendoza / Productor Agropecuario" required={true} type="text"/>
