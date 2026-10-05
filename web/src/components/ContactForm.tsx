@@ -105,10 +105,11 @@ export default function ContactForm() {
                   <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-mensaje">Detalles Adicionales (Área estimada, antecedentes de perforación):</label>
                   <textarea className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-mensaje" placeholder="Ej: Se requieren 2 puntos SEV para un terreno de 50 hectáreas..." rows={2}></textarea>
                 </div>
-                <button className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-2 group" type="submit">
-                  <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
-                  <span>Generar Cotización Inmediata por WhatsApp</span>
-                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+                <button className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden" type="submit">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
+                  <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform relative z-10"></span>
+                  <span className="relative z-10">Generar Cotización Inmediata por WhatsApp</span>
+                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform relative z-10" data-icon="arrow_forward">arrow_forward</span>
                 </button>
               </form>
               <div className="mt-4 text-center font-label-sm text-[10px] text-secondary">
