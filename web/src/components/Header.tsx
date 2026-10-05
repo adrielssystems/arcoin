@@ -39,17 +39,17 @@ export default function Header() {
           </nav>
           {/*  Trailing Action CTA Cluster  */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <a className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 hover:border-emerald-500 transition-colors" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank">
+            <a className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 hover:border-emerald-500 hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank">
               <span className="material-symbols-outlined text-[16px] text-emerald-600" data-icon="chat">chat</span>
               <span>WhatsApp Directo</span>
             </a>
-            <a className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow hover:shadow-md transition-all active:scale-[0.99]" href="#cotizar">
+            <a className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all" href="#cotizar">
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-amber-400"></span>
               <span>Cotizar</span>
             </a>
             {/* Botón de Menú Móvil */}
             <button 
-              className="md:hidden flex items-center justify-center p-1.5 rounded bg-surface-container-high border border-outline-variant/30 text-primary hover:bg-surface-container-highest transition-colors shadow-sm" 
+              className="md:hidden flex items-center justify-center p-1.5 rounded bg-surface-container-high border border-outline-variant/30 text-primary hover:bg-surface-container-highest active:scale-90 transition-all shadow-sm" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Alternar menú móvil"
             >
@@ -69,7 +69,7 @@ export default function Header() {
             <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#metodologia" onClick={() => setIsMobileMenuOpen(false)}>Metodología</a>
             <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#tecnologia" onClick={() => setIsMobileMenuOpen(false)}>Equipamiento</a>
             <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#casos" onClick={() => setIsMobileMenuOpen(false)}>Casos de Éxito</a>
-            <a className="inline-flex items-center gap-2 px-4 py-3 mt-4 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 transition-colors justify-center shadow-sm" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
+            <a className="inline-flex items-center gap-2 px-4 py-3 mt-4 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 hover:-translate-y-0.5 active:scale-95 transition-all justify-center shadow-sm" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
               <span className="material-symbols-outlined text-[18px] text-emerald-600" data-icon="chat">chat</span>
               <span>WhatsApp Directo</span>
             </a>

@@ -30,13 +30,13 @@ export default function Hero() {
             {/*  Fast-Track Lead Gen Action Box  */}
             <div className="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 shadow-sm mb-8 crosshair-corner">
               <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-title-sm text-title-sm shadow-sm transition-all text-center" href="https://wa.me/584166967096?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
+                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-title-sm text-title-sm shadow-sm hover:shadow-md hover:-translate-y-1 active:scale-95 transition-all text-center" href="https://wa.me/584166967096?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
                   <span className="material-symbols-outlined" data-icon="phone_in_talk">phone_in_talk</span>
                   <span>Consultar por WhatsApp con Ingeniero Geofísico</span>
                 </a>
-                <a className="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm transition-all text-center" href="#cotizar">
+                <a className="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-sm hover:shadow-md hover:-translate-y-1 active:scale-95 transition-all text-center group" href="#cotizar">
                   <span>Solicitar Cotización Inmediata</span>
-                  <span className="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
                 </a>
               </div>
               <div className="mt-3 flex items-center justify-between text-label-sm font-label-sm text-secondary pt-2 border-t border-outline-variant/20">

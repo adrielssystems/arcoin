@@ -33,7 +33,7 @@ export default function ContactForm() {
                 <span className="text-label-sm font-label-sm text-secondary block">Canal Directo de Urgencias Geofísicas:</span>
                 <span className="font-orbitron font-bold text-title-md text-primary">+58 (416) 696-7096</span>
               </div>
-              <a className="px-3 py-2 rounded bg-emerald-600 text-white font-title-sm text-title-sm flex items-center gap-1.5 hover:bg-emerald-700 transition-colors" href="https://wa.me/584166967096" rel="noopener noreferrer" target="_blank">
+              <a className="px-3 py-2 rounded bg-emerald-600 text-white font-title-sm text-title-sm flex items-center gap-1.5 hover:bg-emerald-700 shadow hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all" href="https://wa.me/584166967096" rel="noopener noreferrer" target="_blank">
                 <span className="material-symbols-outlined text-[16px]" data-icon="chat">chat</span>
                 <span>WhatsApp</span>
               </a>
@@ -105,10 +105,10 @@ export default function ContactForm() {
                   <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-mensaje">Detalles Adicionales (Área estimada, antecedentes de perforación):</label>
                   <textarea className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-mensaje" placeholder="Ej: Se requieren 2 puntos SEV para un terreno de 50 hectáreas..." rows={2}></textarea>
                 </div>
-                <button className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm transition-all shadow-md flex items-center justify-center gap-2 group" type="submit">
+                <button className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-2 group" type="submit">
                   <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
                   <span>Generar Cotización Inmediata por WhatsApp</span>
-                  <span className="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
                 </button>
               </form>
               <div className="mt-4 text-center font-label-sm text-[10px] text-secondary">
