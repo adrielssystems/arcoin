@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCOIN Geofísica | Sondeo Eléctrico Vertical (SEV) &amp; Hidrogeología</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Orbitron:wght@600;700;800;900&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#000c61",
+            "secondary": "#5a5f66",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "secondary-container": "#dbe0e9",
+            "on-primary-container": "#8e9bf8",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#93ccff",
+            "tertiary-fixed": "#cce5ff",
+            "primary-fixed-dim": "#bcc2ff",
+            "surface-container": "#eaeef8",
+            "inverse-on-surface": "#edf1fb",
+            "surface": "#f8f9ff",
+            "error": "#ba1a1a",
+            "primary": "#021371",
+            "on-background": "#171c23",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#003c5e",
+            "on-tertiary-fixed-variant": "#004b73",
+            "secondary-fixed-dim": "#c2c7cf",
+            "inverse-surface": "#2c3138",
+            "on-surface-variant": "#454652",
+            "on-primary-fixed-variant": "#313e95",
+            "on-tertiary-container": "#49a9ef",
+            "inverse-primary": "#bcc2ff",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#dee2ec",
+            "background": "#f8f9ff",
+            "on-secondary-fixed-variant": "#42474e",
+            "on-secondary-container": "#5e636a",
+            "secondary-fixed": "#dee3eb",
+            "surface-variant": "#dee2ec",
+            "tertiary": "#00253d",
+            "primary-container": "#212e86",
+            "primary-fixed": "#dfe0ff",
+            "surface-dim": "#d6dae4",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#171c22",
+            "outline-variant": "#c6c5d3",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed": "#001d31",
+            "on-surface": "#171c23",
+            "on-error-container": "#93000a",
+            "surface-tint": "#4a56ae",
+            "outline": "#767683",
+            "surface-container-high": "#e4e8f2",
+            "surface-container-low": "#f0f4fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "0.75rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+            "headline-sm": ["Space Grotesk", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "headline-md": ["Space Grotesk", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-xl-mobile": ["Space Grotesk", "sans-serif"],
+            "code-spec": ["JetBrains Mono", "monospace"],
+            "headline-xl": ["Space Grotesk", "sans-serif"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "title-sm": ["Inter", "sans-serif"],
+            "title-md": ["Inter", "sans-serif"],
+            "orbitron": ["Orbitron", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "code-spec": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "title-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .technical-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(30, 35, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 35, 42, 0.04) 1px, transparent 1px);
+    }
+    .crosshair-corner {
+      position: relative;
+    }
+    .crosshair-corner::before, .crosshair-corner::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-color: rgba(33, 46, 134, 0.3);
+      pointer-events: none;
+    }
+    .crosshair-corner::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid;
+      border-left: 2px solid;
+    }
+    .crosshair-corner::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid;
+      border-right: 2px solid;
+    }
+  </style>
+</head>
+<body class="bg-surface-bright text-on-surface technical-grid min-h-screen selection:bg-primary-container selection:text-white antialiased">
+<!-- Top Announcement Bar / Geolocation Live Beacon -->
+<aside class="w-full bg-surface-container-lowest border-b border-outline-variant/30 px-space-md py-1 text-center flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<div class="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+<span class="font-semibold text-primary">OPERACIONES ACTIVAS:</span>
+<span class="text-on-surface">Venezuela (Nacional: Centro, Llanos, Zulia, Oriente)</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hidden sm:inline text-secondary">Acreditación CIV N° 194.208 / SOVG</span>
+<span class="font-code-spec text-primary font-medium tracking-tight">FREQ: 0.5–256 Hz | SCHLUMBERGER STD</span>
+</div>
+</div>
+</aside>
+<!-- Navigation Bar Component (TopNavBar) -->
+<header class="docked full-width top-0 sticky z-50 bg-surface-bright/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline-variant/20 shadow-sm">
+<div class="flex justify-between items-center w-full px-space-xl max-w-7xl mx-auto h-16">
+<!-- Brand Logo Anchor -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-white flex items-center justify-center font-orbitron font-extrabold text-xl shadow-md group-hover:scale-105 transition-transform">
+          A
+        </div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary dark:text-primary-fixed">ARCOIN Geofísica</span>
+<span class="font-label-sm text-[9px] tracking-widest uppercase text-secondary -mt-1 font-semibold">Ingeniería &amp; Sondeo SEV</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary dark:text-inverse-primary font-title-sm text-title-sm border-b-2 border-primary dark:border-inverse-primary pb-1" href="#servicios">Servicios SEV</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#metodologia">Metodología</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#tecnologia">Equipamiento</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#casos">Casos de Éxito</a>
+</nav>
+<!-- Trailing Action CTA Cluster -->
+<div class="flex items-center gap-3">
+<a class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 hover:border-emerald-500 transition-colors" href="https://wa.me/584120000000?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px] text-emerald-600" data-icon="chat">chat</span>
+<span>WhatsApp Directo</span>
+</a>
+<a class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow hover:shadow-md transition-all active:scale-[0.99]" href="#cotizar">
+<span class="w-2 h-2 rounded-full bg-amber-400"></span>
+<span>Cotizar Estudio</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Hero Section with Bento Structure & Geoelectrical Inversion Telemetry -->
+<section class="relative pt-space-lg pb-space-xl overflow-hidden">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<!-- Top Micro Data Ribbon -->
+<div class="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-outline-variant/30 font-label-sm text-label-sm text-secondary">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-semibold border border-outline-variant/40">GEO-SYS ID: SEV-VN-2026-X</span>
+<span class="text-on-surface-variant">SONDEO GEOELÉCTRICO DE PROFUNDIDAD CERTIFICADO</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Mapeo Resistivo Multicapa</span>
+<span class="hidden md:inline text-outline-variant">|</span>
+<span class="font-code-spec text-on-surface">AB/2: 250m | MN/2: 20m</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Hero Value Proposition & Fast Conversion (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 font-label-sm text-label-sm mb-4 w-fit">
+<span class="material-symbols-outlined text-[14px] text-amber-600" data-icon="radar">radar</span>
+<span>MÁXIMA EFICIENCIA HIDROGEOLÓGICA EN SUELO VENEZOLANO</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight mb-4 font-orbitron">
+            Precisión Geofísica Subterránea: <span class="text-tertiary-container block text-headline-lg font-headline-lg font-orbitron mt-1">Certeza Científica antes de Perforar</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-6 leading-relaxed">
+            Elimine el riesgo de pozos secos en Venezuela. Mapeamos acuíferos, espesores litológicos y profundidad exacta mediante <strong class="text-on-surface font-semibold">Sondeo Eléctrico Vertical (SEV) multielectródico</strong> con hasta 95% de asertividad verificada en campo.
+          </p>
+<!-- Fast-Track Lead Gen Action Box -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 shadow-sm mb-8 crosshair-corner">
+<div class="flex flex-col sm:flex-row gap-3 items-stretch">
+<a class="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-title-sm text-title-sm shadow-sm transition-all text-center" href="https://wa.me/584120000000?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined" data-icon="phone_in_talk">phone_in_talk</span>
+<span>Consultar por WhatsApp con Ingeniero Geofísico</span>
+</a>
+<a class="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm transition-all text-center" href="#cotizar">
+<span>Solicitar Cotización Inmediata</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="mt-3 flex items-center justify-between text-label-sm font-label-sm text-secondary pt-2 border-t border-outline-variant/20">
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Equipos en campo activos en Guárico, Aragua y Carabobo</span>
+</span>
+<span class="hidden sm:inline font-mono">Disponibilidad Inmediata</span>
+</div>
+</div>
+<!-- Fast Metric Badges 4x Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
+<div class="font-orbitron font-bold text-headline-sm text-primary">95%+</div>
+<div class="font-label-sm text-label-sm text-secondary uppercase">Precisión Comprobada</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
+<div class="font-orbitron font-bold text-headline-sm text-primary">+650</div>
+<div class="font-label-sm text-label-sm text-secondary uppercase">Estudios en Venezuela</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
+<div class="font-orbitron font-bold text-headline-sm text-amber-600">0%</div>
+<div class="font-label-sm text-label-sm text-secondary uppercase">Riesgo Pozo Ciego</div>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
+<div class="font-orbitron font-bold text-headline-sm text-primary">CIV</div>
+<div class="font-label-sm text-label-sm text-secondary uppercase">Colegiatura Oficial</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive Telemetry 3D Bento Display (5 Cols) -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 shadow-xl overflow-hidden">
+<!-- Hardware / Telemetry Header -->
+<div class="px-4 py-2.5 bg-surface-container-high flex items-center justify-between border-b border-outline-variant/30 font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="terminal">terminal</span>
+<span class="font-code-spec font-bold text-primary">ARCOIN-SEV // RESISTIVÍMETRO V4</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-code-spec text-[10px] font-semibold">SEÑAL SIN RUIDO: 99.4%</span>
+</div>
+<!-- Image Asset with Visual Technical Cutaway -->
+<div class="relative bg-slate-950 aspect-[16/10] overflow-hidden group">
+              https://lh3.googleusercontent.com/aida/AEtjO1WdZ1EhxqtQ9hPWzlXU9PGsXGBNiDlEnLaYD7B9q9vIdVxeP4QldtvAxZNkCt3jwxisM6WhA9RTXlUs3EulPcUiI8hr42Ra7P0IFORE0TyF_as-73_pdo7vbSgJ0Hw3GHPogXaz3x7QmnSSgliXfdO4POzE5cvqP17tudS1akv9Ew3JXUh4tjku3legiybAP3qVZc3HxjxqTYkcUTIOMYho1EwWhgRcGgi4anNgPlFodxGD4aS6tzy2Kep9
+              
+              <!-- Real-time Geoelectrical Telemetry Floating HUD -->
+<div class="absolute bottom-3 left-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-lg border border-white/60 shadow-lg text-on-surface">
+<div class="flex items-center justify-between mb-2 pb-1.5 border-b border-outline-variant/20">
+<span class="font-label-sm text-label-sm font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-amber-500" data-icon="water_drop">water_drop</span>
+                    ACUÍFERO DETECTADO EN FORMACIÓN
+                  </span>
+<span class="font-label-sm text-label-sm bg-primary/10 text-primary px-1.5 py-0.5 rounded font-mono">SEV-PUNTO #04</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-label-sm">
+<div class="bg-surface-bright p-1.5 rounded border border-outline-variant/20">
+<div class="text-secondary text-[10px]">Prof. Total</div>
+<div class="font-orbitron font-bold text-primary text-body-md">120 m</div>
+</div>
+<div class="bg-surface-bright p-1.5 rounded border border-outline-variant/20">
+<div class="text-secondary text-[10px]">Nivel Freático</div>
+<div class="font-orbitron font-bold text-emerald-600 text-body-md">42.5 m</div>
+</div>
+<div class="bg-surface-bright p-1.5 rounded border border-outline-variant/20">
+<div class="text-secondary text-[10px]">Caudal Est.</div>
+<div class="font-orbitron font-bold text-primary text-body-md">14 L/s</div>
+</div>
+<div class="bg-surface-bright p-1.5 rounded border border-outline-variant/20">
+<div class="text-secondary text-[10px]">Confiabilidad</div>
+<div class="font-orbitron font-bold text-amber-600 text-body-md">94.8%</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Schlumberger Inversion Data Breakdown -->
+<div class="p-4 bg-surface-bright border-t border-outline-variant/20 font-body-sm text-body-sm">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-primary font-semibold">Perfil Estratigráfico Invertido:</span>
+<span class="text-label-sm text-secondary font-code-spec">Algoritmo: Marquardt-Levenberg</span>
+</div>
+<div class="space-y-1.5 font-code-spec text-label-sm text-on-surface-variant">
+<div class="flex justify-between items-center bg-white px-2 py-1 rounded border border-outline-variant/20">
+<span>0.0 - 4.5m : Suelo vegetal / Arcilla plástica</span>
+<span class="text-secondary">ρ: 18.2 Ω·m</span>
+</div>
+<div class="flex justify-between items-center bg-white px-2 py-1 rounded border border-outline-variant/20">
+<span>4.5 - 28.0m : Limo arenoso consolidado</span>
+<span class="text-secondary">ρ: 64.0 Ω·m</span>
+</div>
+<div class="flex justify-between items-center bg-emerald-50 px-2 py-1 rounded border border-emerald-300 text-emerald-900 font-semibold">
+<span>28.0 - 75.0m : Arena gruesa saturada [Acuífero]</span>
+<span class="text-emerald-700">ρ: 142.5 Ω·m</span>
+</div>
+<div class="flex justify-between items-center bg-white px-2 py-1 rounded border border-outline-variant/20">
+<span>&gt; 75.0m : Basamento rocoso impermeable</span>
+<span class="text-secondary">ρ: 890.0 Ω·m</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Educational Methodology Section: ¿Cómo Funciona el SEV? -->
+<section class="py-space-xl bg-surface-container-low border-y border-outline-variant/30" id="metodologia">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm mb-3 font-semibold">
+<span class="material-symbols-outlined text-[15px]" data-icon="science">science</span>
+          METODOLOGÍA GEOFÍSICA RIGUROSA
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-orbitron mb-3">¿Cómo Funciona el Sondeo Eléctrico Vertical?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          El SEV mide la respuesta eléctrica del subsuelo al paso de una corriente inducida artificialmente, permitiendo diferenciar estratos de agua dulce, salina, arcillas y lechos rocosos sin abrir zanjas.
+        </p>
+</div>
+<!-- 4-Step Interactive Visual Flow -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-12">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/40 shadow-sm relative group hover:border-primary transition-all">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-orbitron font-bold text-title-md mb-4 border border-outline-variant/30">
+            01
+          </div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Disposición Tetrapolar</span>
+<h3 class="font-title-sm text-title-sm text-primary mb-2">Arreglo Schlumberger</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Se alinean electrodos metálicos de corriente (A-B) y electrodos de potencial (M-N) en el terreno con espaciamiento simétrico y calibrado milimétricamente.
+          </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 font-label-sm text-[11px] text-secondary font-code-spec">
+            Parámetro: K Geométrico
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/40 shadow-sm relative group hover:border-primary transition-all">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-orbitron font-bold text-title-md mb-4 border border-outline-variant/30">
+            02
+          </div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Inyección de Corriente</span>
+<h3 class="font-title-sm text-title-sm text-primary mb-2">Micro-corrientes I [mA]</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Un resistivímetro computarizado introduce pulsos de corriente directa conmutada, alcanzando profundidades proporcionales a la distancia de apertura A-B.
+          </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 font-label-sm text-[11px] text-secondary font-code-spec">
+            I: 50 a 1000 mA
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/40 shadow-sm relative group hover:border-primary transition-all">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-orbitron font-bold text-title-md mb-4 border border-outline-variant/30">
+            03
+          </div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Cálculo de Resistividad</span>
+<h3 class="font-title-sm text-title-sm text-primary mb-2">Resistividad Aparente (ρa)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Se mide la caída de potencial (ΔV) entre M y N. La resistividad aparente revela el contraste directo entre estratos acuíferos permeables y arcillas estériles.
+          </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 font-label-sm text-[11px] text-secondary font-code-spec">
+            Ley de Ohm: ρa = K·(ΔV/I)
+          </div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/40 shadow-sm relative group hover:border-primary transition-all">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center font-orbitron font-bold text-title-md mb-4 border border-outline-variant/30">
+            04
+          </div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">Inversión Matemática</span>
+<h3 class="font-title-sm text-title-sm text-primary mb-2">Cota Exacta &amp; Ranurado</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            El software Ip2win/Res2DInv genera el perfil de resistividad real, especificando a qué metro exacto iniciar la perforación y dónde ubicar los filtros.
+          </p>
+<div class="mt-4 pt-3 border-t border-outline-variant/20 font-label-sm text-[11px] text-secondary font-code-spec">
+            RMS Error &lt; 2.5%
+          </div>
+</div>
+</div>
+<!-- Educational Comparison: Perforar a Ciegas vs Con Estudio SEV -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-red-50/70 border border-red-200 rounded-xl p-6">
+<div class="flex items-center gap-2 text-red-700 font-title-sm text-title-sm mb-3">
+<span class="material-symbols-outlined" data-icon="cancel">cancel</span>
+<span>Perforación Empírica a Ciegas (Alto Riesgo)</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-red-950">
+<li class="flex items-start gap-2">
+<span class="text-red-500 font-bold">•</span>
+<span><strong>Pérdida de capital:</strong> $12,000 – $25,000 USD arriesgados en maquinaria, brocas y tubería sin garantía de caudal.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-red-500 font-bold">•</span>
+<span><strong>40% de tasa de fallo:</strong> Perforación en basamento rocoso estéril, arcillas secas o estratos altamente salobres.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-red-500 font-bold">•</span>
+<span><strong>Colapso prematuro:</strong> Ranurado de filtros en cotas erróneas, taponamiento por arenas finas en pocos meses.</span>
+</li>
+</ul>
+</div>
+<div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-6">
+<div class="flex items-center gap-2 text-emerald-800 font-title-sm text-title-sm mb-3">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span>Estudio Previo SEV ARCOIN (Certeza Técnica)</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-emerald-950">
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">•</span>
+<span><strong>Inversión protegida:</strong> El estudio SEV representa menos del 6% del costo total de obra del pozo profundo.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">•</span>
+<span><strong>95% de asertividad:</strong> Determinación precisa de cota freática, espesor del acuífero y tipo de agua.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-emerald-600 font-bold">•</span>
+<span><strong>Diseño definitivo:</strong> Entrega de plano con cota de perforación, diámetro de tubería y diseño de empaque de grava.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Hierarchy — 2026 Bento Grid -->
+<section class="py-space-xl" id="servicios">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">DIVISIÓN TÉCNICA ESPECIALIZADA</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-orbitron mt-1">Servicios Geofísicos de Campo</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+          Diagnósticos geofísicos conformes a normativas internacionales ASTM D6431 y estándares del Colegio de Ingenieros de Venezuela.
+        </p>
+</div>
+<!-- Bento Grid (8 Col + 4 Col Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Bento Card A: Hidrogeología & Agua Subterránea (Large Bento: 8 cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-primary-container text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary font-code-spec">SERVICIO PRINCIPAL // MOD-HYDRO</span>
+<h3 class="font-headline-md text-headline-md text-primary font-orbitron">Hidrogeología &amp; Detección de Agua Subterránea</h3>
+</div>
+</div>
+<span class="hidden sm:inline-block px-2.5 py-1 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+              SEV 1D &amp; ERT 2D
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+            Localización certera de acuíferos confinados y libres, delimitación de paleocauces aluviales y caracterización de la calidad del agua (detección de salinidad o alta mineralización). Nuestros informes incluyen recomendación de cota exacta de perforación, diámetro de casing y diseño optimizado de ranurado de filtros.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-outline-variant/20 font-body-sm text-body-sm">
+<div class="bg-surface-bright p-3 rounded-lg border border-outline-variant/30">
+<div class="font-semibold text-primary mb-1">Acuíferos Libres y Cautivos</div>
+<div class="text-secondary text-body-sm">Diferenciación de arenas permeables vs arcillas impermeables.</div>
+</div>
+<div class="bg-surface-bright p-3 rounded-lg border border-outline-variant/30">
+<div class="font-semibold text-primary mb-1">Cálculo de Caudales</div>
+<div class="text-secondary text-body-sm">Estimación previa de gasto volumétrico sustentable en L/s.</div>
+</div>
+<div class="bg-surface-bright p-3 rounded-lg border border-outline-variant/30">
+<div class="font-semibold text-primary mb-1">Diseño de Pozo</div>
+<div class="text-secondary text-body-sm">Cotas precisas de empaque de grava de cuarzo y filtros.</div>
+</div>
+</div>
+</div>
+<!-- Bento Card B: Geotecnia & Obras Civiles (4 cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="foundation">foundation</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-code-spec">MOD-GEOTEC</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">Geotecnia &amp; Obras Civiles</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Caracterización de suelo de fundación, profundidad del basamento rocoso (bedrock), detección de fallas geológicas activas, cavernas cársticas y zonas de subsidencia para urbanismos, puentes, fundaciones y naves industriales.
+            </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/20 font-label-sm text-label-sm text-primary flex items-center justify-between font-semibold">
+<span>Ensayos no destructivos</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Bento Card C: Medio Ambiente & Pasivos (4 cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-code-spec">MOD-ENVIRO</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">Medio Ambiente &amp; Pasivos</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Detección y modelado de plumas de contaminación por hidrocarburos, monitoreo de intrusión salina en acuíferos costeros venezolanos y seguimiento de lixiviados en rellenos sanitarios según normativas ambientales.
+            </p>
+</div>
+<div class="pt-3 border-t border-outline-variant/20 font-label-sm text-label-sm text-primary flex items-center justify-between font-semibold">
+<span>Resolución 000056 / MINEC</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Bento Card D: Acreditación Colegiada y Garantía (8 cols) -->
+<div class="lg:col-span-8 bg-gradient-to-r from-surface-container-lowest to-surface-container-low rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+              RESPALDO INSTITUCIONAL OFICIAL
+            </div>
+<h4 class="font-title-md text-title-md text-primary font-orbitron">Certificación Oficial ante el CIV &amp; SOVG</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-lg">
+              Todos los informes de resistividad aparente son suscritos por ingenieros geofísicos colegiados y solventes. Aptos para tramitación de permisos de perforación ante el Ministerio de Ecosocialismo (MINEC).
+            </p>
+</div>
+<div class="shrink-0 flex flex-col items-center justify-center p-4 bg-white rounded-lg border border-outline-variant/30 text-center w-full sm:w-auto">
+<span class="font-orbitron font-bold text-headline-sm text-primary">100%</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Legalidad Vigente</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Visado Geotécnico</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technology & Hardware Stack Section -->
+<section class="py-space-xl bg-surface-container-low border-y border-outline-variant/30" id="tecnologia">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="text-center max-w-3xl mx-auto mb-12">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">INSTRUMENTACIÓN CIENTÍFICA</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-orbitron mt-1 mb-3">Tecnología de Inversión y Hardware de Campo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Adquisición y procesamiento de datos mediante hardware de alta precisión y software de simulación electromagnética estándar mundial.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Tech Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/40 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="font-orbitron font-bold text-headline-sm text-primary">01 / HARDWARE</span>
+<span class="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-label-sm text-label-sm font-semibold">ALTO VOLTAJE</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">Resistivímetros ADMT &amp; GEO-300ZN</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+            Equipos multicanal de inyección de potencia estabilizada con capacidad de penetración geofísica de hasta 300 metros de profundidad. Cuentan con filtros analógicos activos contra el ruido electromagnético industrial de líneas de alta tensión.
+          </p>
+<div class="space-y-1 font-label-sm text-label-sm text-secondary font-code-spec bg-surface-bright p-2.5 rounded border border-outline-variant/20">
+<div>• Rango Voltaje: 0.1 μV a 32 V</div>
+<div>• Precisión de medición: ± 0.5%</div>
+<div>• Supresión de 50/60 Hz: &gt; 90 dB</div>
+</div>
+</div>
+<!-- Tech Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/40 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="font-orbitron font-bold text-headline-sm text-primary">02 / MODELADO 1D</span>
+<span class="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-label-sm text-label-sm font-semibold">INVERSIÓN CURVAS</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">Software Geofísico Ip2win</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+            Ajuste de curvas maestras teóricas contra datos de campo de resistividad aparente para estratificación geológica detallada. Determinación inequívoca del espesor verdadero (h) y resistividad intrínseca (ρ) de cada estrato permeable.
+          </p>
+<div class="space-y-1 font-label-sm text-label-sm text-secondary font-code-spec bg-surface-bright p-2.5 rounded border border-outline-variant/20">
+<div>• Inversión no lineal regularizada</div>
+<div>• Reducción de varianza litológica</div>
+<div>• Integración litológica de calibración</div>
+</div>
+</div>
+<!-- Tech Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/40 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="font-orbitron font-bold text-headline-sm text-primary">03 / TOMOGRAFÍA 2D/3D</span>
+<span class="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-label-sm text-label-sm font-semibold">ERT CONTINUA</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">Res2DInv &amp; Res3DInv Suite</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+            Generación de tomografías eléctricas de resistividad (ERT) para perfiles continuos del subsuelo. Identificación milimétrica de paleocauces ciegos, acuíferos fracturados y domos de agua salina antes de perforar.
+          </p>
+<div class="space-y-1 font-label-sm text-label-sm text-secondary font-code-spec bg-surface-bright p-2.5 rounded border border-outline-variant/20">
+<div>• Malla finita de alta resolución</div>
+<div>• Modelado de topografía irregular</div>
+<div>• Pseudosecciones 2D correlacionadas</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Venezuelan Success Stories Section -->
+<section class="py-space-xl" id="casos">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">COMPROBACIÓN EN CAMPO</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-orbitron mt-1">Casos de Éxito en Venezuela</h2>
+</div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+<span>Pozos en producción continua al 100%</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Case 1: Guárico -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="p-5">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary mb-2">
+<span class="font-code-spec text-primary font-semibold">AGROINDUSTRIA // GUÁRICO</span>
+<span>Calabozo, Edo. Guárico</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">
+              Acuífero Formación Mesa a 68m para Riego
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Mapeo de paleocauce arenoso de alta permeabilidad en finca arrocera de 450 hectáreas. Se evitó perforar en arcilla compacta situada a escasos 150m de distancia.
+            </p>
+<div class="grid grid-cols-2 gap-2 bg-surface-bright p-2.5 rounded-lg border border-outline-variant/20 font-label-sm">
+<div>
+<span class="text-secondary text-[10px] block">Caudal Obtenido:</span>
+<span class="font-orbitron font-bold text-primary text-title-sm">22 L/s</span>
+</div>
+<div>
+<span class="text-secondary text-[10px] block">Ahorro Estimado:</span>
+<span class="font-orbitron font-bold text-emerald-600 text-title-sm">$18,500 USD</span>
+</div>
+</div>
+</div>
+<div class="px-5 py-2.5 bg-surface-container-high border-t border-outline-variant/20 font-label-sm text-[11px] text-on-surface-variant flex justify-between items-center">
+<span>Prof. Perforada: 82 metros</span>
+<span class="text-emerald-700 font-semibold font-mono">AGUA DULCE CRISTALINA</span>
+</div>
+</article>
+<!-- Case 2: Carabobo -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="p-5">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary mb-2">
+<span class="font-code-spec text-primary font-semibold">SECTOR INDUSTRIAL // CARABOBO</span>
+<span>Zona Ind. Valencia</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">
+              Mapeo de Basamento &amp; Arcillas Expansivas
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Estudio geotécnico con SEV multielectródico para nave logística de 12,000 m². Detección de estrato rocoso discontinuo y lentes de arcilla que exigían micropilotaje.
+            </p>
+<div class="grid grid-cols-2 gap-2 bg-surface-bright p-2.5 rounded-lg border border-outline-variant/20 font-label-sm">
+<div>
+<span class="text-secondary text-[10px] block">Área Mapeada:</span>
+<span class="font-orbitron font-bold text-primary text-title-sm">1.2 Ha</span>
+</div>
+<div>
+<span class="text-secondary text-[10px] block">Ensayos SEV:</span>
+<span class="font-orbitron font-bold text-primary text-title-sm">18 Puntos</span>
+</div>
+</div>
+</div>
+<div class="px-5 py-2.5 bg-surface-container-high border-t border-outline-variant/20 font-label-sm text-[11px] text-on-surface-variant flex justify-between items-center">
+<span>Visado CIV Carabobo N° 4410</span>
+<span class="text-primary font-semibold font-mono">OBRA EN EJECUCIÓN</span>
+</div>
+</article>
+<!-- Case 3: Zulia -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="p-5">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary mb-2">
+<span class="font-code-spec text-primary font-semibold">GANADERÍA // ZULIA</span>
+<span>Machiques de Perijá</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary font-orbitron mb-2">
+              Descarte de Estrato Salino &amp; Pozo a 85m
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+              Los intentos previos de perforación habían extraído agua salobre no apta para ganado. El SEV diferenció con precisión el estrato salino superior del acuífero dulce inferior.
+            </p>
+<div class="grid grid-cols-2 gap-2 bg-surface-bright p-2.5 rounded-lg border border-outline-variant/20 font-label-sm">
+<div>
+<span class="text-secondary text-[10px] block">Caudal Firme:</span>
+<span class="font-orbitron font-bold text-primary text-title-sm">16 L/s</span>
+</div>
+<div>
+<span class="text-secondary text-[10px] block">Conductividad:</span>
+<span class="font-orbitron font-bold text-emerald-600 text-title-sm">380 μS/cm</span>
+</div>
+</div>
+</div>
+<div class="px-5 py-2.5 bg-surface-container-high border-t border-outline-variant/20 font-label-sm text-[11px] text-on-surface-variant flex justify-between items-center">
+<span>Filtro aislado contra intrusión</span>
+<span class="text-emerald-700 font-semibold font-mono">100% OPERACIONAL</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Interactive Lead Gen & Quote Simulator Section -->
+<section class="py-space-xl bg-surface-container-low border-t border-outline-variant/30" id="cotizar">
+<div class="max-w-7xl mx-auto px-space-md sm:px-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 space-y-4">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]" data-icon="send">send</span>
+            PRESUPUESTO TÉCNICO SIN COMPROMISO
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-orbitron">
+            Solicite su Estudio SEV en Venezuela
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Consulte con nuestros ingenieros geofísicos antes de contratar maquinaria de perforación. Coordinamos logística y traslado de instrumental técnico a cualquier estado del país en menos de 48 horas.
+          </p>
+<div class="space-y-3 pt-2">
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
+<span class="font-body-md text-body-md text-on-surface">Presupuesto formal desglosado con honorarios CIV oficiales.</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
+<span class="font-body-md text-body-md text-on-surface">Informe interpretativo 1D/2D con cota precisa de perforación.</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
+<span class="font-body-md text-body-md text-on-surface">Asistencia telefónica continua con el perforador durante la obra.</span>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-between mt-6">
+<div>
+<span class="text-label-sm font-label-sm text-secondary block">Canal Directo de Urgencias Geofísicas:</span>
+<span class="font-orbitron font-bold text-title-md text-primary">+58 (412) 000-0000</span>
+</div>
+<a class="px-3 py-2 rounded bg-emerald-600 text-white font-title-sm text-title-sm flex items-center gap-1.5 hover:bg-emerald-700 transition-colors" href="https://wa.me/584120000000" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]" data-icon="chat">chat</span>
+<span>WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Form Column -->
+<div class="lg:col-span-6">
+<div class="bg-surface-container-lowest p-6 sm:p-8 rounded-xl border border-outline-variant/40 shadow-xl crosshair-corner">
+<div class="flex justify-between items-center mb-6 pb-2 border-b border-outline-variant/20">
+<span class="font-orbitron font-bold text-title-md text-primary">Simulador de Cotización SEV</span>
+<span class="font-label-sm text-[10px] text-secondary font-code-spec">RESPUESTA &lt; 2 HORAS</span>
+</div>
+<form class="space-y-4" onsubmit="event.preventDefault(); window.open('https://wa.me/584120000000?text=' + encodeURIComponent('Hola ARCOIN, deseo cotizar un estudio SEV para ' + document.getElementById('req-tipo').value + ' en el estado ' + document.getElementById('req-estado').value + '. Mi nombre es ' + document.getElementById('req-nombre').value));">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="req-nombre">Nombre Completo y Cargo:</label>
+<input class="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-nombre" placeholder="Ej: Ing. Carlos Mendoza / Productor Agropecuario" required="" type="text"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="req-empresa">Empresa, Finca o Proyecto:</label>
+<input class="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-empresa" placeholder="Ej: Agropecuaria El Palmar" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="req-estado">Estado / Municipio:</label>
+<select class="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-estado">
+<option value="Guárico">Guárico</option>
+<option value="Carabobo">Carabobo</option>
+<option value="Aragua">Aragua</option>
+<option value="Zulia">Zulia</option>
+<option value="Portuguesa">Portuguesa</option>
+<option value="Anzoátegui">Anzoátegui</option>
+<option value="Monagas">Monagas</option>
+<option value="Miranda / Gran Caracas">Miranda / Gran Caracas</option>
+<option value="Lara">Lara</option>
+<option value="Otro Estado">Otro Estado (Nacional)</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="req-tipo">Tipo de Requerimiento Geofísico:</label>
+<select class="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-tipo">
+<option value="Agua Subterránea (Detección de Acuífero para Pozo)">Agua Subterránea (Detección de Acuífero para Pozo)</option>
+<option value="Geotecnia de Fundación (Basamento Rocoso / Fallas)">Geotecnia de Fundación (Basamento Rocoso / Fallas)</option>
+<option value="Diagnóstico Ambiental (Plumas / Intrusión Salina)">Diagnóstico Ambiental (Plumas / Intrusión Salina)</option>
+<option value="Malla de Puesta a Tierra Subestación Eléctrica">Malla de Puesta a Tierra Subestación Eléctrica</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" for="req-mensaje">Detalles Adicionales (Área estimada, antecedentes de perforación):</label>
+<textarea class="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-mensaje" placeholder="Ej: Se requieren 2 puntos SEV para un terreno de 50 hectáreas..." rows="2"></textarea>
+</div>
+<button class="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm transition-all shadow-md flex items-center justify-center gap-2 group" type="submit">
+<span class="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform"></span>
+<span>Generar Cotización Inmediata por WhatsApp</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-4 text-center font-label-sm text-[10px] text-secondary">
+              Protección de datos bajo confidencialidad profesional geocientífica.
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Component (Footer) -->
+<footer class="full-width bottom bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant/30 dark:border-outline-variant/20">
+<div class="w-full px-space-xl py-space-xl max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-space-md">
+<!-- Brand & Corporate Legal Footprint -->
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed">
+          ARCOIN Geofísica
+        </div>
+<p class="font-body-sm text-body-sm text-secondary">
+          RIF: J-40812930-1 | Sedes operativas: Caracas, Valencia y Barquisimeto.
+        </p>
+<p class="font-body-sm text-body-sm text-secondary">
+          © 2026 ARCOIN Ingeniería Geofísica &amp; Hidrogeología C.A. Todos los derechos reservados.
+        </p>
+</div>
+<!-- Footer Navigation Links List -->
+<div class="flex flex-wrap justify-center items-center gap-4 text-center">
+<a class="text-primary dark:text-inverse-primary font-label-sm text-label-sm hover:underline" href="#servicios">Sondeo Eléctrico Vertical (SEV)</a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#servicios">Hidrogeología de Acuíferos</a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#tecnologia">Certificaciones Geotécnicas</a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#metodologia">Normativa INAMEH</a>
+<span class="text-outline-variant">•</span>
+<a class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm hover:text-primary dark:hover:text-inverse-primary transition-colors" href="#">Aviso Legal &amp; Privacidad</a>
+</div>
+</div>
+</footer>
+</body></html>
