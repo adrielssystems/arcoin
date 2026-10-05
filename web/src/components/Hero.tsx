@@ -79,7 +79,7 @@ export default function Hero() {
                 <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-code-spec text-[10px] font-semibold">SEÑAL SIN RUIDO: 99.4%</span>
               </div>
               {/*  Image Asset with Visual Technical Cutaway  */}
-              <div className="relative bg-slate-950 aspect-[16/10] overflow-hidden group flex items-center justify-center">
+              <div className="relative bg-slate-950 aspect-[4/5] sm:aspect-[16/10] overflow-hidden group flex items-center justify-center">
                 <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-screen">
                   <source src="/demo-sev.mp4" type="video/mp4" />
                 </video>
