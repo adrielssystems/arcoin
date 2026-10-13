@@ -37,87 +37,90 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 bg-slate-950/80 backdrop-blur-sm animate-fadeIn"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="legal-modal-title"
     >
       <div 
-        className="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl border border-slate-300 shadow-2xl flex flex-col overflow-hidden text-slate-900"
+        className="bg-white w-full max-w-4xl h-[92dvh] sm:h-[88vh] max-h-[95dvh] rounded-t-2xl sm:rounded-2xl border border-slate-300 shadow-2xl flex flex-col overflow-hidden text-slate-900"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Modal */}
-        <div className="p-4 sm:p-6 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-blue-100 text-blue-900 flex items-center justify-center font-bold">
-              <span className="material-symbols-outlined text-[24px]" data-icon="gavel">gavel</span>
+        {/* Header Modal (Fixed, shrink-0) */}
+        <div className="shrink-0 px-4 py-3 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-100 text-blue-900 flex items-center justify-center font-bold shrink-0">
+              <span className="material-symbols-outlined text-[20px] sm:text-[24px]" data-icon="gavel">gavel</span>
             </div>
-            <div>
-              <h2 id="legal-modal-title" className="font-orbitron font-bold text-title-md sm:text-headline-sm text-slate-900">
+            <div className="min-w-0">
+              <h2 id="legal-modal-title" className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-900 truncate">
                 Marco Legal &amp; Normativo
               </h2>
-              <p className="font-label-sm text-[11px] sm:text-label-sm text-slate-600 font-semibold">
-                ARCOIN C.A. • RIF J-238524731 • República Bolivariana de Venezuela
+              <p className="font-label-sm text-[10px] sm:text-[12px] text-slate-600 truncate font-semibold">
+                ARCOIN C.A. • RIF J-238524731 • Venezuela
               </p>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-800 flex items-center justify-center transition-colors active:scale-95"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-800 flex items-center justify-center transition-colors active:scale-95 shrink-0 ml-2"
             aria-label="Cerrar modal"
           >
-            <span className="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+            <span className="material-symbols-outlined text-[18px] sm:text-[20px]" data-icon="close">close</span>
           </button>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex border-b border-slate-200 bg-slate-100 px-3 sm:px-6 overflow-x-auto gap-2 pt-2">
+        {/* Tab Navigation (Fixed, shrink-0, perfectly scrollable horizontally) */}
+        <div className="shrink-0 flex border-b border-slate-200 bg-slate-100 px-3 sm:px-6 overflow-x-auto gap-2 pt-2 scrollbar-none">
           <button
             onClick={() => setActiveTab('terminos')}
-            className={`py-3 px-4 font-orbitron text-label-md sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-2 border-b-2 ${
+            className={`py-2 px-3 sm:py-2.5 sm:px-4 font-orbitron text-[12px] sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-1.5 border-b-2 shrink-0 ${
               activeTab === 'terminos'
                 ? 'bg-white text-blue-950 border-blue-900 shadow-sm'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 border-transparent'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]" data-icon="description">description</span>
-            Términos del Servicio
+            <span className="material-symbols-outlined text-[16px] sm:text-[18px]" data-icon="description">description</span>
+            <span className="hidden sm:inline">Términos del Servicio</span>
+            <span className="sm:hidden">Términos</span>
           </button>
 
           <button
             onClick={() => setActiveTab('privacidad')}
-            className={`py-3 px-4 font-orbitron text-label-md sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-2 border-b-2 ${
+            className={`py-2 px-3 sm:py-2.5 sm:px-4 font-orbitron text-[12px] sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-1.5 border-b-2 shrink-0 ${
               activeTab === 'privacidad'
                 ? 'bg-white text-blue-950 border-blue-900 shadow-sm'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 border-transparent'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]" data-icon="privacy_tip">privacy_tip</span>
-            Política de Privacidad
+            <span className="material-symbols-outlined text-[16px] sm:text-[18px]" data-icon="privacy_tip">privacy_tip</span>
+            <span className="hidden sm:inline">Política de Privacidad</span>
+            <span className="sm:hidden">Privacidad</span>
           </button>
 
           <button
             onClick={() => setActiveTab('seguridad')}
-            className={`py-3 px-4 font-orbitron text-label-md sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-2 border-b-2 ${
+            className={`py-2 px-3 sm:py-2.5 sm:px-4 font-orbitron text-[12px] sm:text-title-sm rounded-t-lg font-bold transition-all whitespace-nowrap flex items-center gap-1.5 border-b-2 shrink-0 ${
               activeTab === 'seguridad'
                 ? 'bg-white text-blue-950 border-blue-900 shadow-sm'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/70 border-transparent'
             }`}
           >
-            <span className="material-symbols-outlined text-[18px]" data-icon="shield">shield</span>
-            Seguridad &amp; Confidencialidad
+            <span className="material-symbols-outlined text-[16px] sm:text-[18px]" data-icon="shield">shield</span>
+            <span className="hidden sm:inline">Seguridad &amp; Confidencialidad</span>
+            <span className="sm:hidden">Seguridad VE</span>
           </button>
         </div>
 
-        {/* Content Body */}
-        <div className="p-4 sm:p-8 overflow-y-auto space-y-6 text-body-md text-slate-800 leading-relaxed bg-white">
+        {/* Scrollable Content Body (flex-1 min-h-0) */}
+        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6 text-body-sm sm:text-body-md text-slate-800 leading-relaxed bg-white overscroll-contain">
           {activeTab === 'terminos' && (
-            <div className="space-y-6 animate-fadeIn">
+            <div className="space-y-5 sm:space-y-6 animate-fadeIn">
               {/* Alert Banner con Alto Contraste */}
-              <div className="p-4 rounded-xl bg-blue-50 border-2 border-blue-200 text-slate-900 shadow-sm">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-blue-50 border-2 border-blue-200 text-slate-900 shadow-sm">
                 <div className="flex items-center gap-2 font-bold text-title-sm font-orbitron text-blue-950">
-                  <span className="material-symbols-outlined text-[22px] text-blue-800" data-icon="balance">balance</span>
+                  <span className="material-symbols-outlined text-[20px] sm:text-[22px] text-blue-800" data-icon="balance">balance</span>
                   Marco Jurídico Aplicable
                 </div>
                 <p className="text-body-sm mt-1 text-slate-800 font-medium leading-relaxed">
@@ -126,7 +129,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   1. Identificación y Alcance de ARCOIN C.A.
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -138,7 +141,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   2. Naturaleza Científica del Estudio Geofísico
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -150,7 +153,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   3. Cumplimiento de la Ley de Aguas y Normativa MINEC
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -162,7 +165,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   4. Validez de Cotizaciones y Condiciones de Pago
                 </h3>
                 <p className="text-slate-800">
@@ -173,11 +176,11 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
           )}
 
           {activeTab === 'privacidad' && (
-            <div className="space-y-6 animate-fadeIn">
+            <div className="space-y-5 sm:space-y-6 animate-fadeIn">
               {/* Alert Banner con Alto Contraste */}
-              <div className="p-4 rounded-xl bg-emerald-50 border-2 border-emerald-300 text-slate-900 shadow-sm">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-emerald-50 border-2 border-emerald-300 text-slate-900 shadow-sm">
                 <div className="flex items-center gap-2 font-bold text-title-sm font-orbitron text-emerald-950">
-                  <span className="material-symbols-outlined text-[22px] text-emerald-800" data-icon="verified_user">verified_user</span>
+                  <span className="material-symbols-outlined text-[20px] sm:text-[22px] text-emerald-800" data-icon="verified_user">verified_user</span>
                   Garantía Constitucional y Legal
                 </div>
                 <p className="text-body-sm mt-1 text-slate-800 font-medium leading-relaxed">
@@ -186,7 +189,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   1. Principio de Habeas Data (Art. 28 CRBV)
                 </h3>
                 <p className="text-slate-800">
@@ -195,7 +198,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   2. Datos Recabados y Finalidad
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -214,7 +217,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   3. Ejercicio de Derechos ARCO
                 </h3>
                 <p className="text-slate-800">
@@ -225,11 +228,11 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
           )}
 
           {activeTab === 'seguridad' && (
-            <div className="space-y-6 animate-fadeIn">
+            <div className="space-y-5 sm:space-y-6 animate-fadeIn">
               {/* Alert Banner con Alto Contraste */}
-              <div className="p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-slate-900 shadow-sm">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-slate-900 shadow-sm">
                 <div className="flex items-center gap-2 font-bold text-title-sm font-orbitron text-amber-950">
-                  <span className="material-symbols-outlined text-[22px] text-amber-800" data-icon="lock">lock</span>
+                  <span className="material-symbols-outlined text-[20px] sm:text-[22px] text-amber-800" data-icon="lock">lock</span>
                   Protección Bajo la Ley Especial Contra Delitos Informáticos
                 </div>
                 <p className="text-body-sm mt-1 text-slate-800 font-medium leading-relaxed">
@@ -238,7 +241,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   1. Confidencialidad de Coordenadas y Recursos Hídricos
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -250,7 +253,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   2. Medidas Técnicas de Ciberseguridad Web
                 </h3>
                 <p className="mb-2 text-slate-800">
@@ -265,7 +268,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               </div>
 
               <div>
-                <h3 className="font-orbitron font-bold text-title-md text-slate-950 mb-2">
+                <h3 className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-950 mb-1.5">
                   3. Contacto Institucional y Canal de Seguridad
                 </h3>
                 <p className="text-slate-800">
@@ -276,16 +279,16 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
           )}
         </div>
 
-        {/* Modal Footer */}
-        <div className="p-4 sm:p-5 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-slate-600 font-label-sm text-[11px] sm:text-[12px] text-center sm:text-left font-medium">
-            Documento actualizado conforme a las leyes vigentes de la República Bolivariana de Venezuela.
+        {/* Modal Footer (Fixed, shrink-0, compact on mobile) */}
+        <div className="shrink-0 px-4 py-3 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+          <div className="text-slate-600 font-label-sm text-[10px] sm:text-[11px] leading-tight">
+            Leyes vigentes de la República Bolivariana de Venezuela.
           </div>
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-blue-950 hover:bg-blue-900 text-white font-title-sm text-title-sm font-bold transition-all shadow hover:shadow-md active:scale-95 cursor-pointer"
+            className="px-5 py-2 sm:px-6 sm:py-2.5 rounded-lg bg-blue-950 hover:bg-blue-900 text-white font-title-sm text-label-md sm:text-title-sm font-bold transition-all shadow hover:shadow-md active:scale-95 cursor-pointer shrink-0"
           >
-            Entendido y Aceptar
+            Entendido
           </button>
         </div>
       </div>
