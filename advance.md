@@ -17,7 +17,10 @@ Cuenta con su dominio corporativo propio registrado y configurado: **`arcoinca.c
 - **Localización Hiper-Segmentada:** Copywriting apuntado estrictamente a Nueva Esparta (Isla de Margarita, Coche y Cubagua), con selectores municipales en el formulario.
 - **Integración Multimedia Tecnológica:** Interfaz HUD animada (`demo-sev.mp4`), comparativa interactiva contra pozos secos (`SINSERV.mp4`) y fondos temáticos industriales oscuros.
 - **Simulador de Cotización Vía WhatsApp:** Redirección automática de variables (Nombre, Empresa, Municipio, Tipo) a una plantilla corporativa en WhatsApp.
-- **SEO & Metadatos Corporativos:** Configuración de metadatos SEO, Open Graph y Twitter Cards apuntando a `https://arcoinca.com/` con URL canónica establecida.
+- **SEO & Metadatos Corporativos (Optimización para WhatsApp & Redes Sociales):**
+  - Generación de imagen Open Graph oficial (`web/public/og-image.jpg`) en proporción 1200x630 y peso optimizado (151 KB, cumpliendo estrictamente el límite de 300 KB de WhatsApp).
+  - Integración del logotipo real corporativo de ARCOIN en tarjeta destacada de alta fidelidad, con razón social **ARCOIN C.A.** sin redundancias, RIF oficial `J-238524731` e infografía técnica de comparación (*Sin SEV vs Con SEV*).
+  - Inclusión de etiquetas Open Graph, Twitter Cards (`summary_large_image`) y marcado de datos estructurados Schema.org (`ProfessionalService`) con coordenadas geográficas y datos de contacto en [index.html](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/index.html).
 - **Identidad Corporativa y Métricas Actualizadas:** Actualización de razón social a **ARCOIN.C.A.** con **RIF J-238524731**, eliminación de cintillo superior inicial, ajuste técnico de profundidad a *"Hasta 300 Mts. de profundidad"* y actualización de métrica a **+45 estudios en Nva. Esparta**.
 - **Reestructuración de Bento de Servicios:** Eliminación de la tarjeta secundaria de Geotecnia & Obras Civiles, expansión de **SERVICIOS PRINCIPALES // MOD-HYDRO** a ancho completo (12 columnas) y aumento del cuerpo de texto para lectura cómoda y fluida en dispositivos móviles y de escritorio.
 - **Optimización de Casos y FAQ:** Remoción de la tarjeta de agricultura en Casos de Éxito (quedando un grid de 2 columnas balanceado) y eliminación de la tarjeta de Atención Directa en FAQ, centrando el acordeón de preguntas frecuentes para máxima legibilidad.
@@ -44,7 +47,9 @@ Cuenta con su dominio corporativo propio registrado y configurado: **`arcoinca.c
 - **Configuración Docker (Easypanel):**
   - Creación de un `Dockerfile` multi-etapa en la raíz del proyecto.
   - Implementación de un servidor `nginx:alpine` con `nginx.conf` dedicado para manejar las rutas SPA, la compresión Gzip, la caché agresiva de imágenes y videos, y `server_name` enrutando `arcoinca.com` y `www.arcoinca.com`.
-  - **Blindaje de Seguridad y Bloqueo de Bots Scanners:** Se actualizaron reglas estrictas en `nginx.conf` para bloquear intentos de extracción de archivos ocultos (`/.env`, `/.git`, `/.aws`), archivos de respaldo (`.bak`, `.sql`, `.log`) y sondas de WordPress (`/wp-includes`, `/xmlrpc.php`), respondiendo de inmediato con `404 Not Found` en lugar de caer en el fallback SPA con código 200.
+  - **Blindaje de Seguridad y Bloqueo de Bots Scanners:** Se actualizaron reglas estrictas en `nginx.conf` para bloquear intentos de extracción de archivos ocultos (`/.env`, `/.git`, `/.aws`), sondas de configuración (`/env`, `/api/config`, `/config.json`, `/config.js`), archivos Markdown de IA (`/README.md`, `/AGENTS.md`, `/CLAUDE.md`) y sondas de WordPress (`/wp-includes`, `/xmlrpc.php`), respondiendo de inmediato con `404 Not Found` en lugar de caer en el fallback SPA con código 200.
+  - **Filtro de User-Agents Maliciosos:** Bloqueo 403 a bots rastreadores abusivos (`CoinCreator`, `FossickBot`, `ShinkiHPBot`, `CMS-Checker`, `aiohttp`, `HeadlessChrome`).
+  - **Generación y Manejo de Favicons:** Creación de `favicon.ico` y `favicon.png` para erradicar errores 404 en el log de Nginx generados por navegadores y dispositivos iOS.
   - Inclusión de cabeceras de seguridad HTTP (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`, `Referrer-Policy`).
   - Corrección de errores de contexto en GitHub (Push Protection por API Keys en local) y errores estrictos de TypeScript (`TS6133: 'React' is never read`).
 - **Control de Versiones:** Repositorio en GitHub configurado (`adrielssystems/arcoin.git`).
