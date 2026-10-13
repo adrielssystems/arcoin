@@ -12,36 +12,7 @@ export default function SuccessStories() {
             <span>Pozos en producción continua al 100%</span>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {/*  Case 1: Agricultura  */}
-          <article className="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-            <div className="p-5">
-              <div className="flex items-center justify-between text-label-sm font-label-sm text-secondary mb-2">
-                <span className="font-code-spec text-primary font-semibold">AGRICULTURA // ANTOLÍN DEL CAMPO</span>
-                <span>Sector El Salado, Isla de Margarita</span>
-              </div>
-              <h3 className="font-title-md text-title-md text-primary font-orbitron mb-2">
-                Acuífero Formación Mesa a 68m para Riego
-              </h3>
-              <p className="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
-                Mapeo de paleocauce arenoso de alta permeabilidad en finca arrocera de 450 hectáreas. Se evitó perforar en arcilla compacta situada a escasos 150m de distancia.
-              </p>
-              <div className="grid grid-cols-2 gap-2 bg-surface-bright p-2.5 rounded-lg border border-outline-variant/20 font-label-sm">
-                <div>
-                  <span className="text-secondary text-[10px] block">Caudal Obtenido:</span>
-                  <span className="font-orbitron font-bold text-primary text-title-sm">22 L/s</span>
-                </div>
-                <div>
-                  <span className="text-secondary text-[10px] block">Ahorro Estimado:</span>
-                  <span className="font-orbitron font-bold text-emerald-600 text-title-sm">$18,500 USD</span>
-                </div>
-              </div>
-            </div>
-            <div className="px-5 py-2.5 bg-surface-container-high border-t border-outline-variant/20 font-label-sm text-[11px] text-on-surface-variant flex justify-between items-center">
-              <span>Prof. Perforada: 82 metros</span>
-              <span className="text-emerald-700 font-semibold font-mono">AGUA DULCE CRISTALINA</span>
-            </div>
-          </article>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {/*  Case 2: Hotelería  */}
           <article className="bg-surface-container-lowest rounded-xl border border-outline-variant/40 overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
             <div className="p-5">

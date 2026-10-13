@@ -4,14 +4,16 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-space-md sm:px-space-xl">
         {/*  Top Micro Data Ribbon  */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-outline-variant/30 font-label-sm text-label-sm text-secondary">
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded bg-surface-container-high text-primary font-semibold border border-outline-variant/40">GEO-SYS ID: SEV-VN-2026-X</span>
-            <span className="text-on-surface-variant">SONDEO GEOELÉCTRICO DE PROFUNDIDAD CERTIFICADO</span>
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="w-2 h-2 rounded-full bg-amber-500 ring-4 ring-amber-400/20 animate-pulse"></span>
+            <span className="font-orbitron font-bold text-xs sm:text-sm md:text-base text-primary tracking-wide">
+              SONDEO GEOELÉCTRICO DE PROFUNDIDAD CERTIFICADO
+            </span>
           </div>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Mapeo Resistivo Multicapa</span>
             <span className="hidden md:inline text-outline-variant">|</span>
-            <span className="font-code-spec text-on-surface">AB/2: 250m | MN/2: 20m</span>
+            <span className="font-code-spec text-on-surface">Hasta 300 Mts. de profundidad</span>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
@@ -30,10 +32,10 @@ export default function Hero() {
             {/*  Fast-Track Lead Gen Action Box  */}
             <div className="bg-surface-container-lowest p-space-md rounded-xl border border-outline-variant/40 shadow-sm mb-8 crosshair-corner">
               <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-title-sm text-title-sm shadow-lg hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-1.5 hover:scale-105 active:scale-90 transition-all duration-300 ease-out text-center relative overflow-hidden group" href="https://wa.me/584166967096?text=Solicito%20consulta%20con%20Ingeniero%20Geof%C3%ADsico%20sobre%20SEV" rel="noopener noreferrer" target="_blank">
+                <a className="flex-1 inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-title-sm text-title-sm shadow-lg hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-1.5 hover:scale-105 active:scale-90 transition-all duration-300 ease-out text-center relative overflow-hidden group" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20realizar%20una%20consulta%20sobre%20el%20estudio%20SEV" rel="noopener noreferrer" target="_blank">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite_1s]"></div>
                   <span className="relative z-10 material-symbols-outlined" data-icon="phone_in_talk">phone_in_talk</span>
-                  <span className="relative z-10">Consultar por WhatsApp con Ingeniero Geofísico</span>
+                  <span className="relative z-10">Consulta por WhatsApp</span>
                 </a>
                 <a className="inline-flex justify-center items-center gap-2 px-5 py-3.5 rounded-lg bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-lg hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1.5 hover:scale-105 active:scale-90 transition-all duration-300 ease-out text-center group relative overflow-hidden" href="#cotizar">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
@@ -56,7 +58,7 @@ export default function Hero() {
                 <div className="font-label-sm text-label-sm text-secondary uppercase">Tasa de Éxito</div>
               </div>
               <div className="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
-                <div className="font-orbitron font-bold text-headline-sm text-primary">+650</div>
+                <div className="font-orbitron font-bold text-headline-sm text-primary">+45</div>
                 <div className="font-label-sm text-label-sm text-secondary uppercase">Estudios en Nva. Esparta</div>
               </div>
               <div className="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
@@ -75,8 +77,7 @@ export default function Hero() {
               {/*  Hardware / Telemetry Header  */}
               <div className="px-4 py-2.5 bg-surface-container-high flex items-center justify-between border-b border-outline-variant/30 font-label-sm text-label-sm">
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[16px] text-primary" data-icon="terminal">terminal</span>
-                  <span className="font-code-spec font-bold text-primary">ARCOIN-SEV // RESISTIVÍMETRO V4</span>
+                  <span className="font-code-spec font-bold text-primary">ARCOIN-SEV // RESISTIVÍMETRO</span>
                 </div>
                 <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-code-spec text-[10px] font-semibold">SEÑAL SIN RUIDO: 99.4%</span>
               </div>
@@ -94,7 +95,6 @@ export default function Hero() {
                       <span className="material-symbols-outlined text-[14px] text-amber-500" data-icon="water_drop">water_drop</span>
                       ACUÍFERO DETECTADO EN FORMACIÓN
                     </span>
-                    <span className="font-label-sm text-label-sm bg-primary/10 text-primary px-1.5 py-0.5 rounded font-mono">SEV-PUNTO #04</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-label-sm">
                     <div className="bg-surface-bright p-1.5 rounded border border-outline-variant/20">

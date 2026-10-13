@@ -1,4 +1,104 @@
+import { useState, useRef, useEffect, type FormEvent } from 'react';
+
 export default function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const mountTimeRef = useRef<number>(Date.now());
+  const honeypotRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    mountTimeRef.current = Date.now();
+  }, []);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // 1. Protección Anti-Bot Honeypot
+    if (honeypotRef.current && honeypotRef.current.value) {
+      setSubmitStatus('success');
+      setStatusMessage('¡Solicitud enviada con éxito! Nos comunicaremos a la brevedad.');
+      return;
+    }
+
+    // 2. Protección Time-Based (Evitar envíos automatizados menores a 2.5s)
+    const elapsedTime = Date.now() - mountTimeRef.current;
+    if (elapsedTime < 2500) {
+      setSubmitStatus('error');
+      setStatusMessage('Envío detectado como automatizado. Por favor revise el formulario.');
+      return;
+    }
+
+    // 3. Protección Rate Limiting / Debounce (Cooldown de 30 segundos)
+    const lastSubmit = localStorage.getItem('arcoin_last_form_submit');
+    const now = Date.now();
+    if (lastSubmit && now - parseInt(lastSubmit, 10) < 30000) {
+      const remaining = Math.ceil((30000 - (now - parseInt(lastSubmit, 10))) / 1000);
+      setSubmitStatus('error');
+      setStatusMessage(`Por favor espere ${remaining} segundos antes de enviar otra solicitud.`);
+      return;
+    }
+
+    const form = e.currentTarget;
+    const elements = form.elements as any;
+    const nombre = (elements['req-nombre']?.value || '').trim();
+    const telefono = (elements['req-telefono']?.value || '').trim();
+    const email = (elements['req-email']?.value || '').trim();
+    const empresa = (elements['req-empresa']?.value || '').trim();
+    const municipio = (elements['req-estado']?.value || '').trim();
+    const tipo = (elements['req-tipo']?.value || '').trim();
+    const mensaje = (elements['req-mensaje']?.value || '').trim();
+
+    if (!nombre || !telefono || !email) {
+      setSubmitStatus('error');
+      setStatusMessage('Por favor complete los campos obligatorios: Nombre, Teléfono y Correo.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/arcoinca10@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `Nueva Cotización SEV: ${nombre} (${municipio})`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: email,
+          'Nombre Completo y Cargo': nombre,
+          'Teléfono / WhatsApp': telefono,
+          'Correo Electrónico': email,
+          'Empresa, Finca o Proyecto': empresa || 'Particular / No especificado',
+          'Municipio (Nva. Esparta)': municipio,
+          'Tipo de Requerimiento': tipo,
+          'Detalles del Proyecto': mensaje || 'Sin detalles adicionales'
+        })
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success !== 'false') {
+        localStorage.setItem('arcoin_last_form_submit', now.toString());
+        setSubmitStatus('success');
+        setStatusMessage('¡Solicitud enviada con éxito! Los datos fueron remitidos a nuestro equipo geofísico en arcoinca10@gmail.com.');
+        form.reset();
+        mountTimeRef.current = Date.now();
+      } else {
+        throw new Error(data.message || 'Error en la respuesta del servidor');
+      }
+    } catch (err) {
+      setSubmitStatus('error');
+      setStatusMessage('No se pudo enviar el correo en este instante. Puede contactarnos de inmediato por WhatsApp o escribiendo a arcoinca10@gmail.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-space-xl bg-surface-container-low border-t border-outline-variant/30" id="cotizar">
       <div className="max-w-7xl mx-auto px-space-md sm:px-space-xl">
@@ -21,63 +121,153 @@ export default function ContactForm() {
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
-                <span className="font-body-md text-body-md text-on-surface">Informe interpretativo 1D/2D con cota precisa de perforación.</span>
+                <span className="font-body-md text-body-md text-on-surface">Informe interpretativo 2D/3D con cota precisa de perforación.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
                 <span className="font-body-md text-body-md text-on-surface">Asistencia telefónica continua con el perforador durante la obra.</span>
               </div>
             </div>
+            
+            {/* Canal Directo Box */}
             <div className="p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-between mt-6">
-              <div>
-                <span className="text-label-sm font-label-sm text-secondary block">Canal Directo de Urgencias Geofísicas:</span>
-                <span className="font-orbitron font-bold text-title-md text-primary">+58 (416) 696-7096</span>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="font-orbitron font-bold text-title-md text-primary">Canal Directo</span>
               </div>
-              <a className="px-3 py-2 rounded bg-emerald-600 text-white font-title-sm text-title-sm flex items-center gap-1.5 hover:bg-emerald-700 shadow hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all" href="https://wa.me/584166967096" rel="noopener noreferrer" target="_blank">
-                <span className="material-symbols-outlined text-[16px]" data-icon="chat">chat</span>
+              <a 
+                className="px-4 py-2.5 rounded bg-emerald-600 text-white font-title-sm text-title-sm flex items-center gap-2 hover:bg-emerald-700 shadow hover:shadow-md hover:-translate-y-0.5 active:scale-95 transition-all" 
+                href="https://wa.me/584166967096" 
+                rel="noopener noreferrer" 
+                target="_blank"
+              >
+                <span className="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
                 <span>WhatsApp</span>
               </a>
             </div>
           </div>
-          {/*  Form Column  */}
+
+          {/* Form Column */}
           <div className="lg:col-span-6">
             <div className="bg-surface-container-lowest p-6 sm:p-8 rounded-xl border border-outline-variant/40 shadow-xl crosshair-corner">
               <div className="flex justify-between items-center mb-6 pb-2 border-b border-outline-variant/20">
                 <span className="font-orbitron font-bold text-title-md text-primary">Simulador de Cotización SEV</span>
                 <span className="font-label-sm text-[10px] text-secondary font-code-spec">RESPUESTA &lt; 2 HORAS</span>
               </div>
-              <form className="space-y-4" onSubmit={(e) => { 
-                e.preventDefault(); 
-                const form = e.target as HTMLFormElement; 
-                const elements = form.elements as any;
-                const nombre = elements['req-nombre'].value; 
-                const empresa = elements['req-empresa'].value;
-                const municipio = elements['req-estado'].value; 
-                const tipo = elements['req-tipo'].value;
-                const mensaje = elements['req-mensaje'].value;
-                
-                let texto = `*Hola ARCOIN, deseo solicitar una cotización SEV:*%0A%0A`;
-                texto += `👤 *Nombre:* ${nombre}%0A`;
-                if (empresa) texto += `🏢 *Empresa/Proyecto:* ${empresa}%0A`;
-                texto += `📍 *Ubicación:* Municipio ${municipio}, Nva. Esparta%0A`;
-                texto += `🎯 *Tipo de Estudio:* ${tipo}%0A`;
-                if (mensaje) texto += `📝 *Detalles:* ${mensaje}%0A`;
-                
-                window.open('https://wa.me/584166967096?text=' + texto, '_blank'); 
-              }}>
-                <div>
-                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-nombre">Nombre Completo y Cargo:</label>
-                  <input className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-nombre" placeholder="Ej: Ing. Carlos Mendoza / Productor Agropecuario" required={true} type="text"/>
+
+              {submitStatus === 'success' && (
+                <div className="mb-4 p-4 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-900 text-body-sm flex items-start gap-3 animate-fadeIn">
+                  <span className="material-symbols-outlined text-emerald-600 text-[20px] mt-0.5" data-icon="check_circle">check_circle</span>
+                  <div className="flex-1">
+                    <p className="font-semibold text-title-sm">¡Mensaje Enviado con Éxito!</p>
+                    <p className="text-body-sm mt-0.5">{statusMessage}</p>
+                  </div>
                 </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-4 p-4 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 text-body-sm flex items-start gap-3 animate-fadeIn">
+                  <span className="material-symbols-outlined text-rose-600 text-[20px] mt-0.5" data-icon="error">error</span>
+                  <div className="flex-1">
+                    <p className="font-semibold text-title-sm">Aviso</p>
+                    <p className="text-body-sm mt-0.5">{statusMessage}</p>
+                    <div className="mt-2">
+                      <a 
+                        href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20solicitar%20una%20cotizaci%C3%B3n%20SEV" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-emerald-700 font-semibold hover:underline text-label-sm"
+                      >
+                        <span className="material-symbols-outlined text-[16px]" data-icon="chat">chat</span>
+                        Contactar vía WhatsApp directamente →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                {/* Honeypot anti-spam field (invisible to users) */}
+                <input 
+                  type="text" 
+                  name="_honey_trap" 
+                  ref={honeypotRef} 
+                  style={{ display: 'none' }} 
+                  className="hidden" 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                  aria-hidden="true" 
+                />
+
+                <div>
+                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-nombre">
+                    Nombre Completo y Cargo: <span className="text-rose-600">*</span>
+                  </label>
+                  <input 
+                    className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                    id="req-nombre" 
+                    name="req-nombre"
+                    placeholder="Ej: Ing. Carlos Mendoza / Productor Agropecuario" 
+                    required 
+                    type="text"
+                    maxLength={100}
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-empresa">Empresa, Finca o Proyecto:</label>
-                    <input className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-empresa" placeholder="Ej: Agropecuaria El Palmar" type="text"/>
+                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-telefono">
+                      Teléfono / WhatsApp: <span className="text-rose-600">*</span>
+                    </label>
+                    <input 
+                      className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                      id="req-telefono" 
+                      name="req-telefono"
+                      placeholder="Ej: +58 412 1234567" 
+                      required 
+                      type="tel"
+                      maxLength={30}
+                    />
                   </div>
                   <div>
-                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-estado">Estado / Municipio:</label>
-                    
-                    <select className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-estado">
+                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-email">
+                      Correo Electrónico: <span className="text-rose-600">*</span>
+                    </label>
+                    <input 
+                      className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                      id="req-email" 
+                      name="req-email"
+                      placeholder="Ej: contacto@ejemplo.com" 
+                      required 
+                      type="email"
+                      maxLength={100}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-empresa">
+                      Empresa, Finca o Proyecto:
+                    </label>
+                    <input 
+                      className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                      id="req-empresa" 
+                      name="req-empresa"
+                      placeholder="Ej: Agropecuaria El Palmar" 
+                      type="text"
+                      maxLength={100}
+                    />
+                  </div>
+                  <div>
+                    <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-estado">
+                      Estado / Municipio:
+                    </label>
+                    <select 
+                      className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                      id="req-estado"
+                      name="req-estado"
+                    >
                       <option value="Antolín del Campo">Antolín del Campo</option>
                       <option value="Arismendi">Arismendi</option>
                       <option value="Díaz">Díaz</option>
@@ -92,28 +282,60 @@ export default function ContactForm() {
                     </select>
                   </div>
                 </div>
+
                 <div>
-                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-tipo">Tipo de Requerimiento Geofísico:</label>
-                  <select className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-tipo">
+                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-tipo">
+                    Tipo de Requerimiento Geofísico:
+                  </label>
+                  <select 
+                    className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                    id="req-tipo"
+                    name="req-tipo"
+                  >
                     <option value="Agua Subterránea (Detección de Acuífero para Pozo)">Agua Subterránea (Detección de Acuífero para Pozo)</option>
                     <option value="Geotecnia de Fundación (Basamento Rocoso / Fallas)">Geotecnia de Fundación (Basamento Rocoso / Fallas)</option>
                     <option value="Diagnóstico Ambiental (Plumas / Intrusión Salina)">Diagnóstico Ambiental (Plumas / Intrusión Salina)</option>
                     <option value="Malla de Puesta a Tierra Subestación Eléctrica">Malla de Puesta a Tierra Subestación Eléctrica</option>
                   </select>
                 </div>
+
                 <div>
-                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-mensaje">Detalles Adicionales (Área estimada, antecedentes de perforación):</label>
-                  <textarea className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="req-mensaje" placeholder="Ej: Se requieren 2 puntos SEV para un terreno de 50 hectáreas..." rows={2}></textarea>
+                  <label className="block font-label-sm text-label-sm text-on-surface font-semibold mb-1" htmlFor="req-mensaje">
+                    Detalles Adicionales (Área estimada, antecedentes de perforación):
+                  </label>
+                  <textarea 
+                    className="w-full px-3 py-2 text-body-md bg-surface-bright border border-outline-variant/60 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" 
+                    id="req-mensaje" 
+                    name="req-mensaje"
+                    placeholder="Ej: Se requieren 2 puntos SEV para un terreno de 50 hectáreas..." 
+                    rows={2}
+                    maxLength={600}
+                  ></textarea>
                 </div>
-                <button className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-1 active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden" type="submit">
+
+                <button 
+                  className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden disabled:opacity-60 disabled:pointer-events-none" 
+                  type="submit"
+                  disabled={isSubmitting}
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
-                  <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform relative z-10"></span>
-                  <span className="relative z-10">Generar Cotización Inmediata por WhatsApp</span>
-                  <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform relative z-10" data-icon="arrow_forward">arrow_forward</span>
+                  {isSubmitting ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                      <span className="relative z-10">Enviando cotización...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform relative z-10"></span>
+                      <span className="relative z-10 font-orbitron font-semibold tracking-wide">Enviar</span>
+                      <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform relative z-10" data-icon="send">send</span>
+                    </>
+                  )}
                 </button>
               </form>
+
               <div className="mt-4 text-center font-label-sm text-[10px] text-secondary">
-                Protección de datos bajo confidencialidad profesional geocientífica.
+                Protección de datos bajo confidencialidad profesional geocientífica. Recepción en arcoinca10@gmail.com
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ export default function Technology() {
             {/*  Tech Card 2  */}
             <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/40 shadow-sm">
               <div className="flex items-center justify-between mb-4">
-                <span className="font-orbitron font-bold text-headline-sm text-primary">02 / MODELADO 1D</span>
+                <span className="font-orbitron font-bold text-headline-sm text-primary">02 / MODELADO 2D</span>
                 <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-label-sm text-label-sm font-semibold">INVERSIÓN CURVAS</span>
               </div>
               <h3 className="font-title-md text-title-md text-primary font-orbitron mb-2">Software Geofísico Ip2win</h3>

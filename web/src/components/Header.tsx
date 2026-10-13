@@ -5,20 +5,6 @@ export default function Header() {
 
   return (
     <>
-      {/*  Top Announcement Bar / Geolocation Live Beacon  */}
-      <aside className="hidden md:flex w-full bg-surface-container-lowest border-b border-outline-variant/30 px-space-md py-1 text-center items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
-        <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-1">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span className="font-semibold text-primary">OPERACIONES ACTIVAS:</span>
-            <span className="text-on-surface">Nueva Esparta (Isla de Margarita, Coche y Cubagua)</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline text-secondary">Acreditación CIV N° 194.208 / SOVG</span>
-            <span className="font-code-spec text-primary font-medium tracking-tight">FREQ: 0.5–256 Hz | SCHLUMBERGER STD</span>
-          </div>
-        </div>
-      </aside>
       {/*  Navigation Bar Component (TopNavBar)  */}
       <header className="docked full-width top-0 sticky z-50 bg-white/95 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
         <div className="flex justify-between items-center w-full px-4 sm:px-space-xl max-w-7xl mx-auto h-16 sm:h-20">
@@ -26,8 +12,8 @@ export default function Header() {
           <a className="flex items-center gap-2 sm:gap-3 group" href="#">
             <img src="/logo.jpg" alt="Arcoin Logo" className="h-8 sm:h-12 w-auto mix-blend-multiply group-hover:scale-105 transition-transform" />
             <div className="flex flex-col">
-              <span className="text-[1.1rem] sm:text-headline-sm font-headline-sm font-bold tracking-tight text-primary leading-tight">ARCOIN Geofísica</span>
-              <span className="font-label-sm text-[8px] sm:text-[9px] tracking-widest uppercase text-secondary font-semibold">Ingeniería &amp; Sondeo SEV</span>
+              <span className="text-[1.1rem] sm:text-headline-sm font-headline-sm font-bold tracking-tight text-primary leading-tight">ARCOIN.C.A.</span>
+              <span className="font-code-spec text-[9px] sm:text-[10px] tracking-wider uppercase text-secondary font-semibold">RIF J-238524731</span>
             </div>
           </a>
           {/*  Desktop Navigation Links  */}
