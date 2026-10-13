@@ -4,6 +4,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
+  const [fallbackWaUrl, setFallbackWaUrl] = useState('');
 
   const mountTimeRef = useRef<number>(Date.now());
   const honeypotRef = useRef<HTMLInputElement>(null);
@@ -22,21 +23,11 @@ export default function ContactForm() {
       return;
     }
 
-    // 2. Protección Time-Based (Evitar envíos automatizados menores a 2.5s)
+    // 2. Protección Time-Based suave (1 segundo para permitir pruebas fluidas)
     const elapsedTime = Date.now() - mountTimeRef.current;
-    if (elapsedTime < 2500) {
+    if (elapsedTime < 1000) {
       setSubmitStatus('error');
-      setStatusMessage('Envío detectado como automatizado. Por favor revise el formulario.');
-      return;
-    }
-
-    // 3. Protección Rate Limiting / Debounce (Cooldown de 30 segundos)
-    const lastSubmit = localStorage.getItem('arcoin_last_form_submit');
-    const now = Date.now();
-    if (lastSubmit && now - parseInt(lastSubmit, 10) < 30000) {
-      const remaining = Math.ceil((30000 - (now - parseInt(lastSubmit, 10))) / 1000);
-      setSubmitStatus('error');
-      setStatusMessage(`Por favor espere ${remaining} segundos antes de enviar otra solicitud.`);
+      setStatusMessage('Por favor tómese un segundo para revisar sus datos antes de enviar.');
       return;
     }
 
@@ -56,11 +47,22 @@ export default function ContactForm() {
       return;
     }
 
+    // Preparar mensaje de WhatsApp como contingencia inmediata
+    let waText = `*Solicitud de Cotización SEV - ARCOIN C.A.*%0A%0A`;
+    waText += `👤 *Nombre:* ${encodeURIComponent(nombre)}%0A`;
+    waText += `📞 *Teléfono:* ${encodeURIComponent(telefono)}%0A`;
+    waText += `📧 *Correo:* ${encodeURIComponent(email)}%0A`;
+    if (empresa) waText += `🏢 *Empresa/Proyecto:* ${encodeURIComponent(empresa)}%0A`;
+    waText += `📍 *Municipio:* ${encodeURIComponent(municipio)}%0A`;
+    waText += `🎯 *Tipo:* ${encodeURIComponent(tipo)}%0A`;
+    if (mensaje) waText += `📝 *Detalles:* ${encodeURIComponent(mensaje)}%0A`;
+    setFallbackWaUrl(`https://wa.me/584166967096?text=${waText}`);
+
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/cdc49833a882a91861041baef7779b3e', {
+      const response = await fetch('https://formsubmit.co/ajax/arcoinca10@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,29 +73,29 @@ export default function ContactForm() {
           _template: 'table',
           _captcha: 'false',
           _replyto: email,
-          'Nombre Completo y Cargo': nombre,
-          'Teléfono / WhatsApp': telefono,
-          'Correo Electrónico': email,
-          'Empresa, Finca o Proyecto': empresa || 'Particular / No especificado',
-          'Municipio (Nva. Esparta)': municipio,
-          'Tipo de Requerimiento': tipo,
-          'Detalles del Proyecto': mensaje || 'Sin detalles adicionales'
+          nombre: nombre,
+          telefono: telefono,
+          email: email,
+          empresa: empresa || 'Particular / No especificado',
+          municipio: municipio,
+          tipo_requerimiento: tipo,
+          detalles_proyecto: mensaje || 'Sin detalles adicionales'
         })
       });
 
       const data = await response.json();
       if (response.ok && data.success !== 'false') {
-        localStorage.setItem('arcoin_last_form_submit', now.toString());
         setSubmitStatus('success');
         setStatusMessage('¡Solicitud enviada con éxito! Los datos fueron remitidos a nuestro equipo geofísico en arcoinca10@gmail.com.');
         form.reset();
         mountTimeRef.current = Date.now();
       } else {
-        throw new Error(data.message || 'Error en la respuesta del servidor');
+        const errorText = data.message || 'El servicio de correo está validando el buzón.';
+        throw new Error(errorText);
       }
-    } catch (err) {
+    } catch (err: any) {
       setSubmitStatus('error');
-      setStatusMessage('No se pudo enviar el correo en este instante. Puede contactarnos de inmediato por WhatsApp o escribiendo a arcoinca10@gmail.com.');
+      setStatusMessage(err?.message || 'No se pudo enviar el correo en este instante. Puede contactarnos de inmediato por WhatsApp.');
     } finally {
       setIsSubmitting(false);
     }
@@ -150,8 +152,9 @@ export default function ContactForm() {
           {/* Form Column */}
           <div className="lg:col-span-6">
             <div className="bg-surface-container-lowest p-6 sm:p-8 rounded-xl border border-outline-variant/40 shadow-xl crosshair-corner">
+              {/* Encabezado sin la palabra Simulador */}
               <div className="flex justify-between items-center mb-6 pb-2 border-b border-outline-variant/20">
-                <span className="font-orbitron font-bold text-title-md text-primary">Simulador de Cotización SEV</span>
+                <span className="font-orbitron font-bold text-title-md text-primary">Cotización SEV</span>
                 <span className="font-label-sm text-[10px] text-secondary font-code-spec">RESPUESTA &lt; 2 HORAS</span>
               </div>
 
@@ -169,17 +172,17 @@ export default function ContactForm() {
                 <div className="mb-4 p-4 rounded-lg bg-rose-50 border border-rose-300 text-rose-900 text-body-sm flex items-start gap-3 animate-fadeIn">
                   <span className="material-symbols-outlined text-rose-600 text-[20px] mt-0.5" data-icon="error">error</span>
                   <div className="flex-1">
-                    <p className="font-semibold text-title-sm">Aviso</p>
+                    <p className="font-semibold text-title-sm">Aviso de Envío</p>
                     <p className="text-body-sm mt-0.5">{statusMessage}</p>
-                    <div className="mt-2">
+                    <div className="mt-3">
                       <a 
-                        href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20solicitar%20una%20cotizaci%C3%B3n%20SEV" 
+                        href={fallbackWaUrl || "https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20solicitar%20una%20cotizaci%C3%B3n%20SEV"} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-emerald-700 font-semibold hover:underline text-label-sm"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-label-sm shadow transition-all active:scale-95"
                       >
                         <span className="material-symbols-outlined text-[16px]" data-icon="chat">chat</span>
-                        Contactar vía WhatsApp directamente →
+                        Enviar esta cotización por WhatsApp de inmediato →
                       </a>
                     </div>
                   </div>
