@@ -60,7 +60,7 @@ export default function ContactForm() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/arcoinca10@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/cdc49833a882a91861041baef7779b3e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

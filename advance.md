@@ -28,7 +28,7 @@ Cuenta con su dominio corporativo propio registrado y configurado: **`arcoinca.c
   - Actualización de terminología técnica geofísica: corrección estricta a modelado **2D/3D** (eliminando cualquier referencia a 1D).
   - Rediseño de caja directa: ahora muestra **Canal Directo** a la izquierda y el botón oficial de WhatsApp a la derecha.
   - Modificación del botón de envío a **"Enviar"** con estados de carga (spinner `Enviando...`), deshabilitación preventiva y banners de retroalimentación inmediata (éxito/error).
-  - Enrutamiento directo al correo corporativo **`arcoinca10@gmail.com`** mediante FormSubmit Ajax con formato de tabla estructurada.
+  - Enrutamiento directo al correo corporativo **`arcoinca10@gmail.com`** mediante FormSubmit Ajax con token ofuscado (`cdc49833a882a91861041baef7779b3e`) con formato de tabla estructurada.
   - Implementación de protecciones integrales de seguridad:
     1. *Honeypot invisible* anti-bots (`_honey_trap`).
     2. *Detección de envío ultra-rápido* (tiempo mínimo de interacción de 2.5 seg para descartar bots).
