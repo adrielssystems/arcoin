@@ -90,7 +90,10 @@ export default function ContactForm() {
         form.reset();
         mountTimeRef.current = Date.now();
       } else {
-        const errorText = data.message || 'El servicio de correo está validando el buzón.';
+        let errorText = data.message || 'El servicio de correo está validando el buzón.';
+        if (typeof errorText === 'string' && errorText.toLowerCase().includes('activat')) {
+          errorText = 'FormSubmit requiere una activación única: abra el correo en arcoinca10@gmail.com y haga clic en "Activate Form". Mientras tanto, envíe esta cotización de inmediato por WhatsApp con el botón abajo.';
+        }
         throw new Error(errorText);
       }
     } catch (err: any) {
@@ -99,6 +102,36 @@ export default function ContactForm() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleWhatsAppDirect = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const form = (e.currentTarget as HTMLElement).closest('form');
+    if (!form) return;
+    const elements = form.elements as any;
+    const nombre = (elements['req-nombre']?.value || '').trim();
+    const telefono = (elements['req-telefono']?.value || '').trim();
+    const email = (elements['req-email']?.value || '').trim();
+    const empresa = (elements['req-empresa']?.value || '').trim();
+    const municipio = (elements['req-estado']?.value || '').trim();
+    const tipo = (elements['req-tipo']?.value || '').trim();
+    const mensaje = (elements['req-mensaje']?.value || '').trim();
+
+    if (!nombre) {
+      alert('Por favor ingrese al menos su Nombre para la cotización.');
+      return;
+    }
+
+    let waText = `*Solicitud de Cotización SEV - ARCOIN C.A.*%0A%0A`;
+    waText += `👤 *Nombre:* ${encodeURIComponent(nombre)}%0A`;
+    if (telefono) waText += `📞 *Teléfono:* ${encodeURIComponent(telefono)}%0A`;
+    if (email) waText += `📧 *Correo:* ${encodeURIComponent(email)}%0A`;
+    if (empresa) waText += `🏢 *Empresa/Proyecto:* ${encodeURIComponent(empresa)}%0A`;
+    waText += `📍 *Municipio:* ${encodeURIComponent(municipio)}%0A`;
+    waText += `🎯 *Tipo:* ${encodeURIComponent(tipo)}%0A`;
+    if (mensaje) waText += `📝 *Detalles:* ${encodeURIComponent(mensaje)}%0A`;
+
+    window.open(`https://wa.me/584166967096?text=${waText}`, '_blank');
   };
 
   return (
@@ -316,25 +349,36 @@ export default function ContactForm() {
                   ></textarea>
                 </div>
 
-                <button 
-                  className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden disabled:opacity-60 disabled:pointer-events-none" 
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
-                  {isSubmitting ? (
-                    <>
-                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                      <span className="relative z-10">Enviando cotización...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform relative z-10"></span>
-                      <span className="relative z-10 font-orbitron font-semibold tracking-wide">Enviar</span>
-                      <span className="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform relative z-10" data-icon="send">send</span>
-                    </>
-                  )}
-                </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <button 
+                    className="w-full py-3.5 px-4 rounded bg-primary-container hover:bg-primary text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2 group relative overflow-hidden disabled:opacity-60 disabled:pointer-events-none" 
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_3s_infinite]"></div>
+                    {isSubmitting ? (
+                      <>
+                        <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                        <span className="relative z-10 text-body-sm">Enviando...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="w-2 h-2 rounded-full bg-amber-400 group-hover:scale-125 transition-transform relative z-10"></span>
+                        <span className="relative z-10 font-orbitron font-semibold tracking-wide text-label-md">Enviar por Correo</span>
+                        <span className="material-symbols-outlined text-[17px] group-hover:translate-x-1 transition-transform relative z-10" data-icon="send">send</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button 
+                    type="button"
+                    onClick={handleWhatsAppDirect}
+                    className="w-full py-3.5 px-4 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-title-sm text-title-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2"
+                  >
+                    <span className="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+                    <span className="font-orbitron font-semibold tracking-wide text-label-md">Enviar por WhatsApp</span>
+                  </button>
+                </div>
               </form>
 
               <div className="mt-4 text-center font-label-sm text-[10px] text-secondary">

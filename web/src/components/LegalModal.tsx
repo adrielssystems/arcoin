@@ -136,7 +136,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   <strong className="text-slate-950">ARCOIN C.A.</strong> (RIF J-238524731), con sede operativa en la Isla de Margarita, Estado Nueva Esparta, es una empresa especializada en consultoría geofísica aplicada, ejecución de Sondeos Eléctricos Verticales (SEV) y tomografía geoeléctrica 2D/3D.
                 </p>
                 <p className="text-slate-800">
-                  El acceso a este portal web y el uso del simulador de cotizaciones implica la aceptación plena de las presentes condiciones por parte del usuario o contratante.
+                  El acceso a este portal web y el uso del formulario de Cotización SEV implica la aceptación plena de las presentes condiciones por parte del usuario o contratante.
                 </p>
               </div>
 
@@ -202,7 +202,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   2. Datos Recabados y Finalidad
                 </h3>
                 <p className="mb-2 text-slate-800">
-                  A través de nuestro simulador y formulario de cotización, ARCOIN C.A. recaba únicamente los datos indispensables para formular su propuesta técnica:
+                  A través de nuestro formulario de Cotización SEV, ARCOIN C.A. recaba únicamente los datos indispensables para formular su propuesta técnica:
                 </p>
                 <ul className="list-disc pl-5 space-y-1 mb-2 text-slate-800 font-medium">
                   <li>Nombre completo y cargo profesional.</li>
