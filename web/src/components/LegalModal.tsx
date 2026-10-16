@@ -57,9 +57,13 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
               <h2 id="legal-modal-title" className="font-orbitron font-bold text-title-sm sm:text-title-md text-slate-900 truncate">
                 Marco Legal &amp; Normativo
               </h2>
-              <p className="font-label-sm text-[10px] sm:text-[12px] text-slate-600 truncate font-semibold">
-                ARCOIN C.A. • RIF J-238524731 • Venezuela
-              </p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="font-label-sm text-[11px] sm:text-[12px] text-slate-700 font-semibold">ARCOIN C.A. •</span>
+                <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-amber-100 border border-amber-300 font-code-spec text-[10px] sm:text-[11px] font-bold text-amber-900 tracking-wider">
+                  RIF J-298524731
+                </span>
+                <span className="font-label-sm text-[11px] sm:text-[12px] text-slate-700 font-semibold">• Venezuela</span>
+              </div>
             </div>
           </div>
           <button 
@@ -124,7 +128,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   Marco Jurídico Aplicable
                 </div>
                 <p className="text-body-sm mt-1 text-slate-800 font-medium leading-relaxed">
-                  Regido por el Código Civil de Venezuela, Código de Comercio, Ley del Ejercicio de la Ingeniería, Arquitectura y Profesiones Afines (CIV), y la Ley de Aguas de la República Bolivariana de Venezuela.
+                  Regido por el Código Civil de Venezuela, Código de Comercio y la Ley de Aguas de la República Bolivariana de Venezuela.
                 </p>
               </div>
 
@@ -133,7 +137,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   1. Identificación y Alcance de ARCOIN C.A.
                 </h3>
                 <p className="mb-2 text-slate-800">
-                  <strong className="text-slate-950">ARCOIN C.A.</strong> (RIF J-238524731), con sede operativa en la Isla de Margarita, Estado Nueva Esparta, es una empresa especializada en consultoría geofísica aplicada, ejecución de Sondeos Eléctricos Verticales (SEV) y tomografía geoeléctrica 2D/3D.
+                  <strong className="text-slate-950">ARCOIN C.A.</strong> (RIF J-298524731), con sede operativa en la Isla de Margarita, Estado Nueva Esparta, es una empresa especializada en consultoría geofísica aplicada, ejecución de Sondeos Eléctricos Verticales (SEV) y tomografía geoeléctrica 2D/3D.
                 </p>
                 <p className="text-slate-800">
                   El acceso a este portal web y el uso del formulario de Cotización SEV implica la aceptación plena de las presentes condiciones por parte del usuario o contratante.
@@ -145,7 +149,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   2. Naturaleza Científica del Estudio Geofísico
                 </h3>
                 <p className="mb-2 text-slate-800">
-                  Los estudios de resistividad aparente e inversión geoeléctrica constituyen evaluaciones geocientíficas indirectas de superficie. ARCOIN C.A. garantiza la aplicación de instrumental electromagnético calibrado, normativas del Colegio de Ingenieros de Venezuela (CIV) y software de modelado de vanguardia (Ip2win, Res2DInv/Res3DInv).
+                  Los estudios de resistividad aparente e inversión geoeléctrica constituyen evaluaciones geocientíficas indirectas de superficie. ARCOIN C.A. garantiza la aplicación de instrumental electromagnético calibrado, normativas técnicas de prospección hidrogeológica y software de modelado de vanguardia (Ip2win, Res2DInv/Res3DInv).
                 </p>
                 <p className="text-slate-800">
                   Los informes técnicos entregan cotas de perforación sugeridas, capas impermeables y horizontes acuíferos con base científica verificable. La ejecución mecánica de la perforación (diámetro, tipo de broca, estabilización, engravillado y desarrollo del pozo) es responsabilidad exclusiva de la empresa perforadora que el cliente contrate.
@@ -160,7 +164,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   Conforme a la <strong className="text-slate-950">Ley de Aguas de Venezuela (Gaceta Oficial N° 38.595)</strong>, las aguas subterráneas constituyen bienes del dominio público de la Nación. 
                 </p>
                 <p className="text-slate-800">
-                  Los informes técnicos emitidos por los ingenieros de ARCOIN C.A. son elaborados por profesionales colegiados y solventes ante el CIV, aptos para conformar el expediente técnico exigido por el Ministerio del Poder Popular para el Ecosocialismo (MINEC) en la tramitación de permisos de perforación y aprovechamiento hídrico.
+                  Los informes técnicos emitidos por ARCOIN C.A. son elaborados por ingenieros especialistas en prospección, aptos para conformar el expediente técnico exigido por el Ministerio del Poder Popular para el Ecosocialismo (MINEC) en la tramitación de permisos de perforación y aprovechamiento hídrico.
                 </p>
               </div>
 
@@ -245,7 +249,7 @@ export default function LegalModal({ isOpen, initialTab = 'terminos', onClose }:
                   1. Confidencialidad de Coordenadas y Recursos Hídricos
                 </h3>
                 <p className="mb-2 text-slate-800">
-                  La ubicación exacta de acuíferos, perfiles litológicos, espesores de capas permeables y coordenadas geográficas de los pozos proyectados en el terreno del cliente son tratados bajo <strong className="text-slate-950">estricta reserva profesional</strong> conforme al Código de Ética del Colegio de Ingenieros de Venezuela.
+                  La ubicación exacta de acuíferos, perfiles litológicos, espesores de capas permeables y coordenadas geográficas de los pozos proyectados en el terreno del cliente son tratados bajo <strong className="text-slate-950">estricta reserva y secreto profesional</strong>.
                 </p>
                 <p className="text-slate-800">
                   Dicha información no será compartida con terceros ajenos al proyecto sin autorización previa y por escrito del titular del terreno.

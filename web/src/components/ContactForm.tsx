@@ -73,13 +73,13 @@ export default function ContactForm() {
           _template: 'table',
           _captcha: 'false',
           _replyto: email,
-          nombre: nombre,
-          telefono: telefono,
-          email: email,
-          empresa: empresa || 'Particular / No especificado',
-          municipio: municipio,
-          tipo_requerimiento: tipo,
-          detalles_proyecto: mensaje || 'Sin detalles adicionales'
+          'Nombre Completo': nombre,
+          'Teléfono / WhatsApp': telefono,
+          'Correo Electrónico': email,
+          'Empresa o Proyecto': empresa || 'Particular / No especificado',
+          'Municipio (Nueva Esparta)': municipio,
+          'Tipo de Requerimiento': tipo,
+          'Detalles del Proyecto': mensaje || 'Sin detalles adicionales'
         })
       });
 
@@ -152,7 +152,7 @@ export default function ContactForm() {
             <div className="space-y-3 pt-2">
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>
-                <span className="font-body-md text-body-md text-on-surface">Presupuesto formal desglosado con honorarios CIV oficiales.</span>
+                <span className="font-body-md text-body-md text-on-surface">Presupuesto formal desglosado con tarifas corporativas transparentes.</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-8 rounded bg-primary-container text-white flex items-center justify-center font-bold text-title-sm">✓</span>

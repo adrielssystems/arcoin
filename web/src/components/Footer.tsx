@@ -16,9 +16,15 @@ export default function Footer({ onOpenLegal }: FooterProps) {
               ARCOIN C.A.
             </span>
           </div>
-          <p className="font-body-sm text-body-sm text-slate-300">
-            RIF: J-238524731 | Sede operativa exclusiva: Isla de Margarita, Edo. Nueva Esparta.
-          </p>
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 mt-0.5">
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-code-spec text-[11px] font-bold text-amber-400 tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+              RIF J-298524731
+            </span>
+            <span className="font-body-sm text-body-sm text-slate-300">
+              | Sede operativa: Isla de Margarita, Edo. Nueva Esparta.
+            </span>
+          </div>
           <p className="font-body-sm text-body-sm text-slate-400">
             © 2026 ARCOIN C.A. Todos los derechos reservados.
           </p>

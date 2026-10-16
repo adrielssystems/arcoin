@@ -13,14 +13,18 @@ export default function Header() {
             <img src="/logo.jpg" alt="Arcoin Logo" className="h-8 sm:h-12 w-auto mix-blend-multiply group-hover:scale-105 transition-transform" />
             <div className="flex flex-col">
               <span className="text-[1.1rem] sm:text-headline-sm font-headline-sm font-bold tracking-tight text-primary leading-tight">ARCOIN.C.A.</span>
-              <span className="font-code-spec text-[9px] sm:text-[10px] tracking-wider uppercase text-secondary font-semibold">RIF J-238524731</span>
+              <span className="inline-flex items-center gap-1 mt-0.5 px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300/80 font-code-spec text-[10px] sm:text-[11px] font-bold text-slate-800 tracking-wider shadow-2xs w-fit">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                RIF J-298524731
+              </span>
             </div>
           </a>
           {/*  Desktop Navigation Links  */}
           <nav className="hidden md:flex items-center gap-6">
             <a className="text-primary font-title-sm text-title-sm border-b-2 border-primary pb-1" href="#servicios">Servicios SEV</a>
             <a className="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#metodologia">Metodología</a>
-            <a className="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#tecnologia">Equipamiento</a>
+            <a className="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#admt-300">Equipamiento</a>
+            <a className="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#producto">Entregables</a>
             <a className="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#casos">Casos de Éxito</a>
           </nav>
           {/*  Trailing Action CTA Cluster  */}
@@ -53,7 +57,8 @@ export default function Header() {
           <nav className="flex flex-col p-6 gap-6">
             <a className="text-primary font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#servicios" onClick={() => setIsMobileMenuOpen(false)}>Servicios SEV</a>
             <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#metodologia" onClick={() => setIsMobileMenuOpen(false)}>Metodología</a>
-            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#tecnologia" onClick={() => setIsMobileMenuOpen(false)}>Equipamiento</a>
+            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#admt-300" onClick={() => setIsMobileMenuOpen(false)}>Equipamiento</a>
+            <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#producto" onClick={() => setIsMobileMenuOpen(false)}>Entregables (Informe)</a>
             <a className="text-on-surface-variant font-title-md text-title-md border-b border-outline-variant/20 pb-4" href="#casos" onClick={() => setIsMobileMenuOpen(false)}>Casos de Éxito</a>
             <a className="inline-flex items-center gap-2 px-4 py-3 mt-4 rounded-lg border border-emerald-500/30 bg-emerald-50 text-emerald-800 font-label-md text-label-md hover:bg-emerald-100 hover:-translate-y-0.5 active:scale-95 transition-all justify-center shadow-sm" href="https://wa.me/584166967096?text=Hola%20ARCOIN,%20deseo%20cotizar%20un%20estudio%20geof%C3%ADsico%20SEV" rel="noopener noreferrer" target="_blank" onClick={() => setIsMobileMenuOpen(false)}>
               <span className="material-symbols-outlined text-[18px] text-emerald-600" data-icon="chat">chat</span>

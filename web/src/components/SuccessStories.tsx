@@ -38,7 +38,7 @@ export default function SuccessStories() {
               </div>
             </div>
             <div className="px-5 py-2.5 bg-surface-container-high border-t border-outline-variant/20 font-label-sm text-[11px] text-on-surface-variant flex justify-between items-center">
-              <span>Visado CIV Nueva Esparta</span>
+              <span>Estudio Técnico Concluido</span>
               <span className="text-primary font-semibold font-mono">OBRA EN EJECUCIÓN</span>
             </div>
           </article>

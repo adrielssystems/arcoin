@@ -8,7 +8,7 @@ export default function Services() {
             <h2 className="font-headline-lg text-headline-lg text-primary font-orbitron mt-1">Servicios Geofísicos de Campo</h2>
           </div>
           <p className="font-body-md text-body-md text-on-surface-variant max-w-md">
-            Diagnósticos geofísicos conformes a normativas internacionales ASTM D6431 y estándares del Colegio de Ingenieros de Venezuela.
+            Diagnósticos geofísicos conformes a normativas internacionales ASTM D6431 y estándares de alta precisión hidrogeológica.
           </p>
         </div>
         {/*  Bento Grid (8 Col + 4 Col Layout)  */}
@@ -193,8 +193,8 @@ export default function Services() {
               </div>
             </div>
           </div>
-          {/*  Bento Card C: Medio Ambiente & Pasivos (4 cols)  */}
-          <div className="lg:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          {/*  Bento Card C: Medio Ambiente & Pasivos (4 cols) (Oculto temporalmente)  */}
+          <div className="hidden lg:col-span-4 bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <div className="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
@@ -212,8 +212,8 @@ export default function Services() {
               <span className="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
             </div>
           </div>
-          {/*  Bento Card D: Acreditación Colegiada y Garantía (8 cols)  */}
-          <div className="lg:col-span-8 bg-gradient-to-r from-surface-container-lowest to-surface-container-low rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+          {/*  Bento Card D: Acreditación Colegiada y Garantía (8 cols) (Oculto temporalmente)  */}
+          <div className="hidden lg:col-span-8 bg-gradient-to-r from-surface-container-lowest to-surface-container-low rounded-xl border border-outline-variant/40 p-space-md sm:p-space-lg shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-label-sm text-label-sm font-semibold">
                 <span className="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>

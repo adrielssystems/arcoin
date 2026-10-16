@@ -66,8 +66,8 @@ export default function Hero() {
                 <div className="font-label-sm text-label-sm text-secondary uppercase">Margen Profundidad</div>
               </div>
               <div className="bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/30">
-                <div className="font-orbitron font-bold text-headline-sm text-primary">CIV</div>
-                <div className="font-label-sm text-label-sm text-secondary uppercase">Colegiatura Oficial</div>
+                <div className="font-orbitron font-bold text-headline-sm text-primary">100%</div>
+                <div className="font-label-sm text-label-sm text-secondary uppercase">Método Científico</div>
               </div>
             </div>
           </div>
