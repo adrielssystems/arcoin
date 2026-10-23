@@ -1,66 +1,85 @@
 # Memoria Persistente de Proyecto: ARCOIN Geofísica
 
-**Fecha de última actualización:** 13 de Octubre de 2026
+**Fecha de última actualización:** 16 de Octubre de 2026
 **Desarrollado por:** Adriel's Systems (IA Asistente Antigravity)
 **Dominio Oficial:** `https://arcoinca.com` (con alias `www.arcoinca.com`)
 
 ## Estado Actual del Proyecto
-La "Landing Page" de ARCOIN Geofísica ha alcanzado un estado 100% "Production-Ready". La arquitectura fue simplificada a un flujo **Frontend-only** altamente optimizado y modularizado, enriquecido con una Interfaz de Usuario (UX) premium y animaciones de alta conversión que permite a la empresa recibir leads directamente a WhatsApp.
+La "Landing Page" de ARCOIN Geofísica ha alcanzado un estado 100% "Production-Ready". La arquitectura fue simplificada a un flujo **Frontend-only** altamente optimizado y modularizado, enriquecido con una Interfaz de Usuario (UX) premium y animaciones de alta conversión que permite a la empresa recibir leads directamente a WhatsApp y por correo electrónico mediante FormSubmit.
 Cuenta con su dominio corporativo propio registrado y configurado: **`arcoinca.com`**.
 
-## Hitos Alcanzados (Frontend & UX)
-- **Arquitectura y Modularización:** Se transformó la plantilla base HTML hacia una SPA con React 18 + Vite. Se refactorizó un archivo monolítico `App.tsx` de más de 900 líneas en más de 10 componentes limpios e independientes dentro de `src/components/`.
-- **Estilos y UX Premium:** 
-  - Implementación de Tailwind v4 con tipografías corporativas (Orbitron/Inter).
-  - **Estética Dark Industrial Geocientífica:** Rediseño integral de *Instrumental de Alta Gama*, *Producto Entregable* y *Galería de Campo* sobre fondo pizarra oscura (`bg-slate-950`), micro-malla electromagnética en gradiente radial y tarjetas en `slate-900/90` con bordes precisos, eliminando fondos blancos planos para un aspecto de centro de comando tecnológico de vanguardia.
-  - **Layout Concéntrico en Metodología SEV:** Reestructuración de la sección *Metodología Geofísica Rigurosa*, posicionando el video comparativo (*Sin SEV vs Con SEV*) como elemento central protagónico de gran formato (6 columnas) abrazado simétricamente por las 4 tarjetas técnicas en las esquinas (Pasos 01 y 03 a la izquierda; Pasos 02 y 04 a la derecha).
-  - **Microanimaciones Avanzadas:** Se integró un sistema de interacciones dinámicas de primer nivel: animaciones continuas automáticas (efectos de luz/shimmer), levitaciones 3D al pasar el cursor y respuestas táctiles (`active:scale`) en todos los botones de conversión (CTAs).
-- **Optimización Mobile-First:** Se solucionaron bloqueadores visuales en smartphones, corrigiendo la relación de aspecto del video de la maquinaria, limpiando el header superior para destacar el logo corporativo y rediseñando el menú hamburguesa.
-- **Localización Hiper-Segmentada:** Copywriting apuntado estrictamente a Nueva Esparta (Isla de Margarita, Coche y Cubagua), con selectores municipales en el formulario.
-- **Integración Multimedia Tecnológica & Entregables de Producto:** Interfaz HUD animada (`demo-sev.mp4`), comparativa interactiva contra pozos secos (`SINSERV.mp4`), fondos temáticos industriales oscuros, reproductor de video con doblaje en español (`1016.mp4`), **Sección Producto (Entregables del Estudio)** con desglose de 4 pilares (Mapas 2D/3D del ADMT-300, cota exacta de perforación, punto satelital GPS T-1 y respaldo profesional de ingeniería geofísica) junto con visor de páginas del informe real y descarga del PDF de muestra (`ejemplo-informe-arcoin.pdf`), seguido de la **Galería de Trabajo de Campo** interactiva.
-- **Simulador de Cotización Vía WhatsApp:** Redirección automática de variables (Nombre, Empresa, Municipio, Tipo) a una plantilla corporativa en WhatsApp.
-- **SEO & Metadatos Corporativos (Optimización para WhatsApp & Redes Sociales):**
-  - Generación de imagen Open Graph oficial (`web/public/og-image.jpg`) en proporción 1200x630 y peso optimizado (151 KB, cumpliendo estrictamente el límite de 300 KB de WhatsApp).
-  - Integración del logotipo real corporativo de ARCOIN en tarjeta destacada de alta fidelidad, con razón social **ARCOIN C.A.** sin redundancias, RIF oficial `J-298524731` e infografía técnica de comparación (*Sin SEV vs Con SEV*).
-  - Inclusión de etiquetas Open Graph, Twitter Cards (`summary_large_image`) y marcado de datos estructurados Schema.org (`ProfessionalService`) con coordenadas geográficas y datos de contacto en [index.html](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/index.html).
-- **Identidad Corporativa y Métricas Actualizadas:** Actualización de razón social a **ARCOIN.C.A.** con **RIF J-298524731**, eliminación de cintillo superior inicial, ajuste técnico de profundidad a *"Hasta 300 Mts. de profundidad"* y actualización de métrica a **+45 estudios en Nva. Esparta**.
-- **Reestructuración de Bento de Servicios:** Eliminación de la tarjeta secundaria de Geotecnia & Obras Civiles, expansión de **SERVICIOS PRINCIPALES // MOD-HYDRO** a ancho completo (12 columnas) y aumento del cuerpo de texto para lectura cómoda y fluida en dispositivos móviles y de escritorio.
-- **Optimización de Casos y FAQ:** Remoción de la tarjeta de agricultura en Casos de Éxito (quedando un grid de 2 columnas balanceado) y eliminación de la tarjeta de Atención Directa en FAQ, centrando el acordeón de preguntas frecuentes para máxima legibilidad.
-- **Formulario de Cotización con Envío por Correo & Protecciones Anti-Spam:**
-  - Actualización de terminología técnica geofísica: corrección estricta a modelado **2D/3D** (eliminando cualquier referencia a 1D).
-  - Rediseño de caja directa: ahora muestra **Canal Directo** a la izquierda y el botón oficial de WhatsApp a la derecha.
-  - Modificación del botón de envío a **"Enviar"** con estados de carga (spinner `Enviando...`), deshabilitación preventiva y banners de retroalimentación inmediata (éxito/error).
-  - Enrutamiento directo al correo corporativo **`arcoinca10@gmail.com`** mediante FormSubmit Ajax con token ofuscado (`cdc49833a882a91861041baef7779b3e`) con formato de tabla estructurada.
-  - Implementación de protecciones integrales de seguridad:
-    1. *Honeypot invisible* anti-bots (`_honey_trap`).
-    2. *Detección de envío ultra-rápido* (tiempo mínimo de interacción de 2.5 seg para descartar bots).
-    3. *Rate Limiting / Debounce* local de 30 segundos para evitar spam o clics múltiples repetidos.
-    4. *Validación estricta de campos* incluyendo Teléfono/WhatsApp y Correo Electrónico para garantizar retorno de contacto.
-- **Marco Legal, Privacidad y Seguridad (Legislación Venezolana):**
-  - Creación del componente interactivo [LegalModal.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/LegalModal.tsx) con pestañas dinámicas, navegación accesible y cierre por teclado (ESC) o backdrop.
-  - **Términos del Servicio:** Adaptado al Código Civil, Código de Comercio y la **Ley de Aguas (G.O. N° 38.595)**, definiendo la naturaleza científica indirecta del SEV y delimitando responsabilidades frente a perforadoras.
-  - **Política de Privacidad:** Fundamentada en el **Artículo 28 de la Constitución de la República Bolivariana de Venezuela (Habeas Data)**, la **Ley sobre Mensajes de Datos y Firmas Electrónicas (G.O. N° 37.148)** y derechos ARCO mediante `arcoinca10@gmail.com`.
-  - **Seguridad de la Información Geocientífica:** Basada en la **Ley Especial Contra Delitos Informáticos (G.O. N° 37.313)** y el secreto profesional, resguardando la confidencialidad de coordenadas y ubicación de acuíferos subterráneos.
-  - **Optimización Integral de Contraste y Accesibilidad:** Ajuste de contraste alto en los textos y tarjetas del modal legal (fondos limpios con tipografía oscura de lectura nítida) y rediseño completo de la tipografía del [Footer.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Footer.tsx) sobre fondo pizarra oscuro (`bg-slate-900`) con textos claros (`text-white`, `text-slate-200`, `text-slate-300`, `text-amber-400` y `text-sky-400`) para legibilidad perfecta en cualquier dispositivo.
-  - **Adaptabilidad Móvil Mobile-First del Modal Legal:** Corrección de estructura CSS Flexbox (`shrink-0` en cabecera, pestañas y pie; `flex-1 min-h-0` en área de texto; altura dinámica `h-[92dvh]`), evitando que la barra de direcciones de Android/iOS o los botones inferiores tapen el contenido o bloqueen las pestañas.
-  - Enlaces de activación integrados en el [Footer.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Footer.tsx) y sincronizados con el hash de la URL (`#terminos`, `#privacidad`, `#seguridad`, `#legal`).
-- **Build de Producción Generado:** Compilación exitosa sin errores (`npm run build`), directorio `dist/` empaquetado y listo para carga a servidor remoto.
+---
 
-## Hitos de Despliegue (DevOps)
-- **Configuración Docker (Easypanel):**
-  - Creación de un `Dockerfile` multi-etapa en la raíz del proyecto.
-  - Implementación de un servidor `nginx:alpine` con `nginx.conf` dedicado para manejar las rutas SPA, la compresión Gzip, la caché agresiva de imágenes y videos, y `server_name` enrutando `arcoinca.com` y `www.arcoinca.com`.
-  - **Blindaje de Seguridad y Bloqueo de Bots Scanners:** Se actualizaron reglas estrictas en `nginx.conf` para bloquear intentos de extracción de archivos ocultos (`/.env`, `/.git`, `/.aws`), sondas de configuración (`/env`, `/api/config`, `/config.json`, `/config.js`), archivos Markdown de IA (`/README.md`, `/AGENTS.md`, `/CLAUDE.md`) y sondas de WordPress (`/wp-includes`, `/xmlrpc.php`), respondiendo de inmediato con `404 Not Found` en lugar de caer en el fallback SPA con código 200.
-  - **Filtro de User-Agents Maliciosos:** Bloqueo 403 a bots rastreadores abusivos (`CoinCreator`, `FossickBot`, `ShinkiHPBot`, `CMS-Checker`, `aiohttp`, `HeadlessChrome`).
-  - **Generación y Manejo de Favicons:** Creación de `favicon.ico` y `favicon.png` para erradicar errores 404 en el log de Nginx generados por navegadores y dispositivos iOS.
-  - Inclusión de cabeceras de seguridad HTTP (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`, `Referrer-Policy`).
-  - Corrección de errores de contexto en GitHub (Push Protection por API Keys en local) y errores estrictos de TypeScript (`TS6133: 'React' is never read`).
-- **Control de Versiones:** Repositorio en GitHub configurado (`adrielssystems/arcoin.git`).
+## Registro de Actividades y Novedades del 16 de Octubre de 2026
+
+### 1. Actualización de Identidad Fiscal y Legal
+- **RIF Corporativo:** Se actualizó formalmente el identificador fiscal a **J-298524731** en toda la plataforma ([Header.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Header.tsx), [Footer.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Footer.tsx), [LegalModal.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/LegalModal.tsx) y metadatos SEO en [index.html](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/index.html)), agregando indicadores de estado activo (pulso esmeralda).
+- **Directiva del CEO de ARCOIN (Eliminación de referencias a CIV):** Se eliminó de manera exhaustiva y definitiva cualquier mención, texto, credencial o sello referente a *"Avalado por CIV"*, *"Colegio de Ingenieros"* o números de colegiatura en todos los archivos de código fuente, textos legales y componentes.
+
+### 2. Formulario de Cotización ([ContactForm.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/ContactForm.tsx))
+- **Traducción y Estandarización de Datos:** Se tradujeron todas las claves de los campos del formulario de inglés a español formal (`Nombre Completo`, `Teléfono / WhatsApp`, `Correo Electrónico`, `Empresa o Proyecto`, `Municipio (Nueva Esparta)`, `Tipo de Requerimiento`, `Detalles del Proyecto`) para que los correos recibidos por el equipo técnico en `arcoinca10@gmail.com` sean claros y estructurados en formato de tabla.
+- **Protección Antispam & Contingencia:** Honeypot invisible, validación de tiempo mínimo y botón alternativo de reenvío directo a WhatsApp en caso de retrasos en la red.
+
+### 3. Instrumental de Alta Gama ADMT-300 ZN ([Technology.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Technology.tsx))
+- **Video Demostrativo con Doblaje en Español:** Sustitución del audio original en inglés por locución profesional y explicativa en español neutro (`1016.mp4` / `1016_es_full.mp4`).
+- **Reproductor Técnico Nativo:** Marco de alta gama con relación de aspecto 16:9 (`object-contain`), póster previo personalizado (`admt-300-poster.jpg`) y controles táctiles nativos.
+- **Ocultamiento de Bloque Antiguo:** Se ocultó mediante CSS (`className="hidden"`) la sección anterior de "INSTRUMENTACIÓN CIENTÍFICA: Tecnología de Inversión y Hardware de Campo", preservando el código sin eliminarlo.
+
+### 4. Nueva Sección "Producto // Entregables del Estudio" ([Technology.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Technology.tsx#L161))
+- **Desglose de 4 Pilares del Entregable:**
+  1. *Mapas 2D / 3D:* Curvas maestras y pseudosecciones electromagnéticas generadas por el resistivímetro ADMT-300 ZN señalando la franja saturada de agua.
+  2. *Cota de Perforación:* Profundidad exacta sugerida en metros para la maquinaria perforadora.
+  3. *Punto GPS (T-1):* Coordenadas satelitales georreferenciadas in situ.
+  4. *Respaldo Profesional:* Dictamen científico y memorando interpretativo firmado por ingeniero especialista.
+- **Showcase de Hojas Reales del Informe:** Visor interactivo con 3 extractos de informes geofísicos reales de campo (Carátula, perfil estratigráfico 2D/3D y dictamen técnico) con modal de ampliación (zoom).
+- **Descarga de Informe Modelo:** Botón de descarga directa al documento técnico oficial [ejemplo-informe-arcoin.pdf](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/public/ejemplo-informe-arcoin.pdf).
+
+### 5. Galería Interactiva de Campo ([Technology.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Technology.tsx#L350))
+- **Depuración Visual:** Se eliminaron todos los textos explicativos y descripciones de las imágenes por no ser congruentes con las capturas de campo.
+- **Galería Limpia & Lightbox Fullscreen:** Carrusel con 5 miniaturas táctiles interactivas (`/galery/campo_1.jpg` a `5.jpg`), navegación anterior/siguiente y modal a pantalla completa con soporte táctil.
+
+### 6. Estética Dark Industrial Geocientífica
+- Transformación visual de las secciones *Instrumental ADMT-300 ZN*, *Producto (Entregable)* y *Galería de Campo* desde fondos blancos convencionales hacia una paleta oscura premium (`bg-slate-950`), micro-malla electromagnética en gradiente radial y tarjetas en `slate-900/90` con bordes de precisión.
+- Ocultamiento ordenado de las tarjetas auxiliares en [Services.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Services.tsx), otorgando protagonismo al módulo hidrogeológico principal.
+
+### 7. Metodología Concéntrica & Video Comparativo ([Methodology.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Methodology.tsx))
+- **Estructura Concéntrica:** Reorganización espacial colocando el video comparativo (*Sin SEV vs Con SEV*, `SINSERV.mp4`) en el centro exacto (columna de 6 espacios en escritorio), rodeado en las 4 esquinas por los pasos metodológicos (Paso 01 y 03 a la izquierda; Paso 02 y 04 a la derecha).
+- **Ajuste de Video 16:9:** Aplicación de `aspect-video` y `object-contain` sobre fondo oscuro para evitar recortes de los títulos explicativos ("Sin SEV / Pozo Seco" vs "Con SEV / Acuífero Localizado") en cualquier tamaño de pantalla.
+
+### 8. Auditoría y Optimización Responsive Mobile-First
+- **Navegación Móvil ([Header.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Header.tsx)):** Escalado adaptativo del logo y badge del RIF para pantallas estrechas (<380px), menú hamburguesa fluido con `backdrop-blur-xl` y enlaces táctiles amplios.
+- **Modal Legal ([LegalModal.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/LegalModal.tsx)):** Altura dinámica con `h-[92dvh]`, scroll interior independiente y fijación de pestañas para evitar solapamientos con barras de navegación móviles.
+- **Formularios & Botones:** Elementos táctiles adaptados a toques cómodos con retroalimentación visual en dispositivos táctiles.
+
+### 9. Sección Hero Optimizada ([Hero.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/Hero.tsx))
+- **Video de Fondo Nítido:** Integración del video animado geofísico (`/demo-sev.mp4`) de fondo en bucle continuo con proporciones naturales, nitidez optimizada (`brightness-90 contrast-115`) y degradados cinematográficos para preservar la legibilidad.
+- **Tarjeta Central Translúcida (Glassmorphism):** Eliminación del cuadro lateral derecho para evitar distorsión y sobrecarga, unificando la propuesta de valor y las llamadas a la acción en una tarjeta central de cristal oscuro (`bg-slate-950/75 backdrop-blur-md`).
+- **Métricas Clave:** 4 tarjetas flotantes destacadas (*80-90% Tasa de Éxito*, *+45 Estudios en Nva. Esparta*, *±5-10% Margen de Profundidad*, *100% Método Científico*).
+
+---
+
+## Hitos Anteriores Alcanzados (Frontend & DevOps)
+- **Arquitectura y Modularización:** SPA con React 18 + Vite, Tailwind v4, tipografías Orbitron / Inter.
+- **SEO & Metadatos Corporativos:** Imagen Open Graph oficial (`og-image.jpg`, 151 KB, <300 KB para WhatsApp), Twitter Cards (`summary_large_image`), marcado Schema.org (`ProfessionalService`) y canonical en [index.html](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/index.html).
+- **Marco Legal y Regulatorio:** Términos de servicio según Ley de Aguas (G.O. N° 38.595), Privacidad según Art. 28 CRBV y Ley de Mensajes de Datos (G.O. N° 37.148), y Seguridad según Ley Especial Contra Delitos Informáticos (G.O. N° 37.313).
+- **Despliegue & DevOps:** Dockerfile multi-etapa, servidor Nginx en Alpine para Easypanel, compresión Gzip, caché de assets, bloqueo de bots maliciosos y escáneres en `nginx.conf`, favicons (`favicon.ico`, `favicon.png`, `favicon.svg`).
+
+---
+
+### 10. Optimización SEO Avanzada e Indexación en Google (23 de Octubre de 2026)
+- **Verificación en Google Search Console:** Propiedad de dominio `arcoinca.com` verificada vía DNS en Cloudflare. Solicitud de indexación directa completada exitosamente.
+- **Sitemap Enriquecido:** Actualizado a `2026-10-23` con namespace `image` para que Googlebot indexe el asset oficial `og-image.jpg`.
+- **Datos Estructurados Schema.org Multi-Entidad:**
+  - `ProfessionalService`: Catálogo explícito de servicios (`Sondeo Eléctrico Vertical`, `Tomografía Eléctrica 2D/3D`, `Cota de Perforación y Punto GPS`) y cobertura específica por municipios de Nueva Esparta (Maneiro, Mariño, Arismendi, etc.).
+  - `FAQPage`: Vinculación de las preguntas técnicas frecuentes ([FAQ.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/FAQ.tsx)) para activar Rich Snippets (acordeones desplegables) en los resultados de búsqueda.
+- **Enfoque de Búsqueda Transaccional (Long-Tail):** Títulos y metadescripciones enriquecidos con términos de alta intención de compra en la región (*"pozos de agua Margarita"*, *"detección de agua subterránea"*, *"estudio de suelo para pozo"*).
+
+---
 
 ## Próximos Pasos (Ideas a Futuro)
-Si en el futuro la empresa ARCOIN requiere automatizar más los procesos, estas son las vías sugeridas:
-1. **Fase Backend (Hono.js):** Construir la API que interceptó el formulario originalmente propuesta, para guardar el historial de clientes en una base de datos antes de enviar al usuario a WhatsApp.
-2. **Sitemap & Google Search Console:** Generar `sitemap.xml` y `robots.txt` para vincular con Google Search Console bajo `https://arcoinca.com`.
+1. **Google Business Profile (Google Maps):** Crear y validar la ficha local de ARCOIN en Margarita para captar las búsquedas en mapa.
+2. **Fase Backend (Hono.js / Base de datos):** En caso de requerir base de datos relacional para registrar prospectos antes del despacho de notificaciones.
+3. **Analítica Web:** Integración de herramienta de analítica privada sin cookies (ej. Plausible o Cloudflare Web Analytics).
 
 ---
 *Nota para el agente IA: Lee este archivo al inicio de futuras sesiones para recuperar todo el contexto arquitectónico y de decisiones de este proyecto.*
