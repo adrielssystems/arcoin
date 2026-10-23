@@ -66,20 +66,30 @@ Cuenta con su dominio corporativo propio registrado y configurado: **`arcoinca.c
 
 ---
 
-### 10. Optimización SEO Avanzada e Indexación en Google (23 de Octubre de 2026)
-- **Verificación en Google Search Console:** Propiedad de dominio `arcoinca.com` verificada vía DNS en Cloudflare. Solicitud de indexación directa completada exitosamente.
-- **Sitemap Enriquecido:** Actualizado a `2026-10-23` con namespace `image` para que Googlebot indexe el asset oficial `og-image.jpg`.
-- **Datos Estructurados Schema.org Multi-Entidad:**
-  - `ProfessionalService`: Catálogo explícito de servicios (`Sondeo Eléctrico Vertical`, `Tomografía Eléctrica 2D/3D`, `Cota de Perforación y Punto GPS`) y cobertura específica por municipios de Nueva Esparta (Maneiro, Mariño, Arismendi, etc.).
-  - `FAQPage`: Vinculación de las preguntas técnicas frecuentes ([FAQ.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/FAQ.tsx)) para activar Rich Snippets (acordeones desplegables) en los resultados de búsqueda.
-- **Enfoque de Búsqueda Transaccional (Long-Tail):** Títulos y metadescripciones enriquecidos con términos de alta intención de compra en la región (*"pozos de agua Margarita"*, *"detección de agua subterránea"*, *"estudio de suelo para pozo"*).
+### 10. Optimización SEO, Resolución de Bloqueo 403 e Indexación (23 de Octubre de 2026)
+- **Verificación de Propiedad de Dominio:** Alta y verificación automática de `arcoinca.com` en **Google Search Console** mediante enlace de registros DNS con Cloudflare.
+- **Diagnóstico y Corrección Crítica del Error 403 Forbidden a Googlebot:**
+  - *Problema detectado:* Google Search Console reportó *"Obtención de página: Error: Se ha bloqueado debido a que el acceso no está permitido (403)"*.
+  - *Causa raíz:* En [nginx.conf](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/nginx.conf) la regla de bloqueo de scanners incluía la firma `HeadlessChrome`. Googlebot para Smartphones utiliza internamente motores headless basados en Chromium para renderizar el DOM y ejecutar scripts, recibiendo un 403 de rechazo inmediato.
+  - *Solución:* Se depuró la regla eliminando `HeadlessChrome` e introduciendo una lista blanca prioritaria para crawlers legítimos (`Googlebot`, `bingbot`, `facebookexternalhit`, `WhatsApp`, etc.).
+  - *Despliegue y Validación:* Se realizó commit (`19553a0`), push a GitHub y redeploy en Easypanel. Pruebas directas con `curl` simulando el renderizador de Googlebot confirmaron respuesta **HTTP 200 OK**.
+- **Sitemap XML & Metadatos de Medios:** Actualizado [sitemap.xml](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/public/sitemap.xml) con namespace oficial de Google Images (`xmlns:image`) enlazando `og-image.jpg` con fecha `2026-10-23`.
+- **Datos Estructurados Schema.org Multi-Entidad en [index.html](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/index.html):**
+  - `ProfessionalService`: Catálogo explícito de servicios (`Sondeo Eléctrico Vertical`, `Tomografía Eléctrica 2D/3D`, `Cota de Perforación y Punto GPS`) y cobertura geo-local por municipios de Nueva Esparta (*Maneiro, Mariño, Arismendi, Península de Macanao, etc.*).
+  - `FAQPage`: Esquema JSON-LD conectado a las preguntas frecuentes de [FAQ.tsx](file:///c:/Users/rhect/Documents/Proyectos/Arcoin/web/src/components/FAQ.tsx) para habilitar Rich Snippets (acordeones desplegables) en los resultados de Google.
+  - *Palabras Clave Transaccionales:* Ajuste del título y descripciones hacia términos de alta intención de búsqueda local (*"pozos de agua Margarita"*, *"detección de agua subterránea"*, *"estudios de suelo para pozos"*).
+- **Google Business Profile (Google Maps):**
+  - Registro de la ficha empresarial oficial: categoría geología/geotecnia, descripción técnica optimizada para SEO local en Nueva Esparta, vinculación directa a WhatsApp y sitio web oficial.
+- **Previsualización de Enlace en WhatsApp (Open Graph):**
+  - Validación del crawler `facebookexternalhit/1.1` contra `https://arcoinca.com/`. Imagen oficial `og-image.jpg` optimizada en 151 KB (límite <300 KB exigido por WhatsApp) con ratio 1200x630.
 
 ---
 
 ## Próximos Pasos (Ideas a Futuro)
-1. **Google Business Profile (Google Maps):** Crear y validar la ficha local de ARCOIN en Margarita para captar las búsquedas en mapa.
-2. **Fase Backend (Hono.js / Base de datos):** En caso de requerir base de datos relacional para registrar prospectos antes del despacho de notificaciones.
-3. **Analítica Web:** Integración de herramienta de analítica privada sin cookies (ej. Plausible o Cloudflare Web Analytics).
+1. **Monitoreo de Cobertura en Search Console:** Verificar la transición de *"La URL se puede indexar"* a *"La URL está en Google"* tras la propagación de los servidores.
+2. **Aprobación de Google Business Profile:** Comprobar la activación de la ficha en Google Maps para adueñarse del panel derecho en búsquedas de marca.
+3. **Fase Backend (Hono.js / Base de datos):** En caso de requerir base de datos relacional para registrar prospectos antes del despacho de notificaciones.
+4. **Analítica Web:** Integración de herramienta de analítica privada sin cookies (ej. Plausible o Cloudflare Web Analytics).
 
 ---
 *Nota para el agente IA: Lee este archivo al inicio de futuras sesiones para recuperar todo el contexto arquitectónico y de decisiones de este proyecto.*
